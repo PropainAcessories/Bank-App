@@ -19,7 +19,10 @@ router.get('/', async (req, res) => {
 
 router.get('/login', (req, res) => {
     if(req.session.logged_in) {
-        res.redirect()
+        res.redirect('/account');
+        return;
     }
+
+    res.render('login');
 })
 module.exports = router;
