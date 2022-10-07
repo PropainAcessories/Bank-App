@@ -33,7 +33,7 @@ Savings.belongsTo(Account, {
     foreignKey: 'account_id',
 });
 
-Transaction.hasOne(Account, {
+Transaction.belongsToMany(Checking, Savings, {
     foreignKey: 'account_id'
 });
 
@@ -42,10 +42,6 @@ Savings.hasMany(Transaction, {
 });
 
 Checking.hasMany(Transaction, {
-    foreignKey: 'account_id'
-});
-
-Transaction.belongsToMany(Checking, Savings, {
     foreignKey: 'account_id'
 });
 
