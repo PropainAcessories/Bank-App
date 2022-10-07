@@ -6,12 +6,12 @@ const Customer = require('./Customer');
 const Employee = require('./Employee');
 const Transaction = require('./Transaction');
 
-User.hasMany(Account, {
+User.hasOne(Account, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 
-Account.hasOne(User, {
+Account.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
@@ -37,7 +37,15 @@ Transaction.hasOne(Account, {
     foreignKey: 'account_id'
 });
 
-Account.hasMany(Transaction, {
+Savings.hasMany(Transaction, {
+    foreignKey: 'account_id'
+});
+
+Checking.hasMany(Transaction, {
+    foreignKey: 'account_id'
+});
+
+Transaction.belongsToMany(Checking, Savings, {
     foreignKey: 'account_id'
 });
 
