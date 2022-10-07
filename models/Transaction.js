@@ -1,12 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Checking extends Model {}
+class Transaction extends Model {}
 
-Checking.init(
+Transaction.init(
     {
 
     }
 );
 
-module.exports = Checking;
+module.exports = Transaction;
