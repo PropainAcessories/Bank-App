@@ -14,9 +14,9 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-    secret: 'Super secret secret',
+    secret: '3000 Black Jets of Allah',
     cookie: {
-        maxAge: 60 * 60 * 1000,
+        maxAge: null,
         httpOnly: false,
         secure: true,
         sameSite: 'strict',
