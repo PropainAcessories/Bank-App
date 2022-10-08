@@ -13,6 +13,7 @@ const seedDatabase = async () => {
     await seedTransactions();
     await seedChecking();
     await seedSavings();
+    process.exit(0);
 };
 
 seedDatabase();
