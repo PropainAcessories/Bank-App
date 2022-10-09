@@ -6,6 +6,13 @@ class Employee extends Model {}
 Employee.init(
     {
 
+    },
+    {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'customer'
     }
 );
 
