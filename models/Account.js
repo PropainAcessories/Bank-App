@@ -31,7 +31,7 @@ Account.init(
                 return newUserData;
             },
             beforeUpdate: async (updatedUserData) => {
-                updatedUserData.pin = await bcrypt.hash(updatedUserData);
+                updatedUserData.pin = await bcrypt.hash(updatedUserData, 12);
                 return updatedUserData
             },
         },
