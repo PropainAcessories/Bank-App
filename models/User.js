@@ -24,6 +24,14 @@ User.init(
                 isEmail: true,
             },
         },
+        employee: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+        },
+        customer: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
