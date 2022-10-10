@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Account } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', withAuth,  async (req, res) => {
     try {
-        const userData = await User.findByPk(req.session.user_id, {
-         attributes: { exclude: ['password'] },
+        const userData = await Account.findByPk(req.session.user_id, {
+         attributes: { exclude: ['pin'] },
         });
 
         const users = userData.map((account) => account.get({ plain: true }));

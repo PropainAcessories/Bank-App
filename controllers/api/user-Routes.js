@@ -1,5 +1,45 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Account } = require('../../models');
+const withAuth = require('../../utils/auth');
+
+router.get('/', async (req, res) => {
+    try {
+        const userData = await User.findAll({
+        attributes: { exclude: ['password'] },
+        order: [['name', 'ASC']],
+    });
+
+    res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/:id', async (req, res) => {
+    try {
+        const userData = await User.findOne({
+            attributes: { exclude: ['password'] },
+            where: {
+                id: req.params.id
+            },
+            include: [
+                {
+                    model: Account,
+                    attributes: { exclude: ['pin'] },
+                }
+            ]
+        })
+
+        if (!userData) {
+            res.status(404).json({ message: 'No user found check ID and search again.' });
+            return;
+        }
+
+        res.json.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 router.post('/', async (req, res) => {
     try {
@@ -34,6 +74,10 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.user_id = userData.id;
+            req.session.name = userData.name;
+            req.session.email = userData.email;
+            req.session.employee = userData.employee;
+            req.session.customer = userData.customer;
             req.session.logged_in = true;
 
             res.status(200).json({ user: userData, message: 'You are now logged in'});
