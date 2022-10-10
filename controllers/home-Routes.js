@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
 
         if (!infoData) {
             res.status(404).json({ message: 'Site down somehow LOL' });
+            return;
         };
 
         const information = infoData.map((information) => information.get({ plain: true }));
@@ -28,8 +29,8 @@ router.get('/account', withAuth, async (req, res) =>{
         const accountData = await Account.findByPk(req.session.user_id, {
             attributes: { exclude: ['pin'] },
             include: [
-                { model: Savings },
-                { model: Checking }],
+                { model: Savings, attributes: { exclude: ['balance'] } },
+                { model: Checking, attributes: { exclude: ['balance'] } }],
         });
 
         if(!accountData) {
@@ -103,7 +104,7 @@ router.get('/user', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Account }],
+            include: [{ model: Account, attributes: { exclude: ['pin']} }],
         });
 
         if(!userData) {
@@ -148,6 +149,7 @@ router.get('/transaction', withAuth, async (req, res) => {
 
         if (!transactionData) {
             res.status(404).json({ message: 'No transactions found check ID or log in.' });
+            return;
         };
 
         const transaction = transactionData.get({ plain: true });
