@@ -12,7 +12,7 @@ Account.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        accountType: {
+        account_type: {
             type: DataTypes.STRING,
             primaryKey: true,
             allowNull: false,
