@@ -14,6 +14,7 @@ Account.init(
         },
         accountType: {
             type: DataTypes.STRING,
+            primaryKey: true,
             allowNull: false,
         },
         pin: {
