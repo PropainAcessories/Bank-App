@@ -22,10 +22,10 @@ router.get('/', async (req, res) => {
 router.get('/account', withAuth, async (req, res) =>{
     try {
         const userData = await Account.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
+            attributes: { exclude: ['pin'] },
             include: [
                 { model: Savings },
-                {model: Checking}],
+                { model: Checking }],
         });
 
         const user = userData.get({ plain: true });

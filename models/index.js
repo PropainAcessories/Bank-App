@@ -26,23 +26,23 @@ Account.hasMany(Savings, {
 });
 
 Checking.belongsTo(Account, {
-    //
+    foreignKey: 'user_id'
 });
 
 Savings.belongsTo(Account, {
-    //
+    foreignKey: 'user_id'
 });
 
 Transaction.belongsToMany(Checking, Savings, {
-    //
+    foreignKey: 'account_id'
 });
 
 Savings.hasMany(Transaction, {
-    //
+    foreignKey: 'account_id'
 });
 
 Checking.hasMany(Transaction, {
-    //
+    foreignKey: 'account_id'
 });
 
 module.exports = { User, Account, Savings, Checking, Transaction, Information };
