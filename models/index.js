@@ -2,9 +2,9 @@ const User = require('./User');
 const Account = require('./Account');
 const Savings = require('./Savings');
 const Checking = require('./Checking');
-const Customer = require('./Customer');
-const Employee = require('./Employee');
 const Transaction = require('./Transaction');
+const Information = require('./Information');
+
 
 User.hasOne(Account, {
     foreignKey: 'user_id',
@@ -33,7 +33,7 @@ Savings.belongsTo(Account, {
     //
 });
 
-Transaction.belongsTo(Checking, Savings, {
+Transaction.belongsToMany(Checking, Savings, {
     //
 });
 
@@ -45,4 +45,4 @@ Checking.hasMany(Transaction, {
     //
 });
 
-module.exports = { User, Account, Savings, Checking, Customer, Employee, Transaction };
+module.exports = { User, Account, Savings, Checking, Transaction, Information };

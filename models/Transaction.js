@@ -18,7 +18,14 @@ Transaction.init(
         style: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'account',
+                key: 'id',
+            }
+        },
     },
     {
         sequelize,
