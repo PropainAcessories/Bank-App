@@ -15,8 +15,8 @@ Transaction.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        style: {
-            type: DataTypes.STRING,
+        type: {
+            type: DataTypes.FLOAT,
             allowNull: false,
         },
         user_id: {

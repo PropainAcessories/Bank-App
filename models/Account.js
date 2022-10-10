@@ -13,7 +13,7 @@ Account.init(
             autoIncrement: true,
         },
         account_type: {
-            type: DataTypes.STRING,
+            type: DataTypes.FLOAT,
             primaryKey: true,
             allowNull: false,
         },
