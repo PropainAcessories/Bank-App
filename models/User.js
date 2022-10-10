@@ -24,13 +24,8 @@ User.init(
                 isEmail: true,
             },
         },
-        employee: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-            primaryKey: true,
-        },
-        customer: {
-            type: DataTypes.BOOLEAN,
+        user_type: {
+            type: DataTypes.FLOAT,
             allowNull: true,
             primaryKey: true,
         },
