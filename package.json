@@ -3,22 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "seed": "node seeds/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PropainAcessories/Bank-App.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PropainAcessories/Bank-App/issues"
-  },
-  "homepage": "https://github.com/PropainAcessories/Bank-App#readme",
   "dependencies": {
     "dayjs": "^1.11.5",
     "bcrypt": "^5.0.0",
@@ -29,5 +13,21 @@
     "mysql2": "^2.2.5",
     "express-session": "^1.17.1",
     "sequelize": "^6.3.5"
-  }
+  },  
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PropainAcessories/Bank-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PropainAcessories/Bank-App/issues"
+  },
+  "homepage": "https://github.com/PropainAcessories/Bank-App#readme"
 }
