@@ -27,10 +27,12 @@ User.init(
         employee: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
+            primaryKey: true,
         },
         customer: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
+            primaryKey: true,
         },
         password: {
             type: DataTypes.STRING,

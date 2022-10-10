@@ -14,6 +14,7 @@ Account.init(
         },
         accountType: {
             type: DataTypes.STRING,
+            primaryKey: true,
             allowNull: false,
         },
         pin: {
@@ -31,7 +32,7 @@ Account.init(
                 return newUserData;
             },
             beforeUpdate: async (updatedUserData) => {
-                updatedUserData.pin = await bcrypt.hash(updatedUserData);
+                updatedUserData.pin = await bcrypt.hash(updatedUserData, 12);
                 return updatedUserData
             },
         },
