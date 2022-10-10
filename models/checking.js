@@ -18,6 +18,13 @@ Checking.init(
                 len: [0, 150000]
             }
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            }
+        },
     }
 );
 
