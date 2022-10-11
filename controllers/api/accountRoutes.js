@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Account, Checking, Savings } = require('../../models');
+const { Account } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -22,16 +22,6 @@ router.get('/:id', withAuth, async (req, res) => {
             where: {
                 id: req.params.id
             },
-            include: [
-                {
-                    model: Savings,
-                    attributes: { exclude: ['balance'] },
-                },
-                {
-                    model: Checking,
-                    attributes: { exclude: ['balance'] }
-                }
-            ]
         });
 
         if (!accountData) {
