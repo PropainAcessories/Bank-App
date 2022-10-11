@@ -1,25 +1,26 @@
 const signUpHandler = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#email-signup').value().trim();
-    const name = document.querySelector('#name-signup').value().trim();
-    const password = document.querySelector('#password-signup').value().trim();
-    const passwordConfirm = document.querySelector('#confirm-password').value().trim();
+    const email = document.querySelector('#email-signup').value.trim();
+    const name = document.querySelector('#name-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
+    const user_type = document.querySelector('#user-type').value.trim();
+    //const passwordConfirm = document.querySelector('#confirm-password').value().trim();
 
-    if (email && name && password && passwordConfirm) {
-        const response = await fetch('/api/users', {
-            method: 'post',
+    if (email && name && password) {
+        const response = await fetch('/api/user', {
+            method: 'POST',
             body: JSON.stringify({
                 email,
                 name,
+                user_type,
                 password,
-                passwordConfirm
+                headers: { 'Content-Type': 'application/json' },
             }),
-            headers: { 'Content-Type': 'application/json' }
         });
 
-        if (response.ok && password === passwordConfirm) {
-            document.location.replace('/home');
+        if (response.ok) {
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
