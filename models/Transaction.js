@@ -12,12 +12,15 @@ Transaction.init(
             autoIncrement: true,
         },
         date: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATEONLY,
             allowNull: false,
         },
         type: {
             type: DataTypes.FLOAT,
             allowNull: false,
+        },
+        amount: {
+            type: DataTypes.DECIMAL,
         },
         user_id: {
             type: DataTypes.INTEGER,
