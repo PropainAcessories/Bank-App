@@ -4,7 +4,7 @@ const loginHandler = async (event) => {
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
-    if (!email || !!password) {
+    if (!email || !password) {
         alert("Fields empty.");
         return
     }
@@ -16,11 +16,12 @@ const loginHandler = async (event) => {
 
     const response = await fetch('/api/user/login', {
         method: 'POST',
-        body: JSON.stringify({email, password}),
+        body: JSON.stringify({
+            email,
+            password
+        }),
         headers: {'Content-Type': 'application/json'},
     });
-
-    console.log(response);
 
     if (response.ok) {
         document.location.replace('/');
