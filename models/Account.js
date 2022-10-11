@@ -8,13 +8,12 @@ Account.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true,
         },
         account_type: {
-            type: DataTypes.FLOAT,
-            primaryKey: true,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         pin: {
@@ -24,13 +23,12 @@ Account.init(
                 len: [4, 4]
             }
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            }
-        },
+        // user_id: {
+        //     references: {
+        //         model: 'user',
+        //         key: 'id',
+        //     }
+        // },
     },
     {
         hooks: {

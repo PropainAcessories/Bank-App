@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Savings, Transaction } = require('../../models');
+const { Savings } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Re-Awaken when we are able to verify between customer and employee.
@@ -23,10 +23,10 @@ router.get('/:id', withAuth, async (req, res) => {
                 id: req.params.id
             },
             attributes: ['id', 'balance', 'user_id'],
-            include: { 
-                model: Transaction,
-                attributes: ['id', 'date', 'type', 'amount', 'user_id']
-            }
+            // include: { 
+            //     model: Transaction,
+            //     attributes: ['id', 'date', 'type', 'amount', 'user_id']
+            // }
         });
         if (!savingsData) {
             res.status(404).json({ message: 'No account found check the ID in the URL or your login status.' });

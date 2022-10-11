@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Account, Information, Savings, Checking, Transaction } = require('../models');
+const { User, Account, Information, Savings, Checking } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -54,10 +54,10 @@ router.get('/checking', withAuth, async (req, res) => {
     try {
         const checkingData = await Checking.findByPk(req.session.user_id, {
             attributes: ['id', 'balance', 'user_id'],
-            include: {
-                 model: Transaction,
-                 attributes: ['id', 'date', 'type', 'user_id']
-                },
+            // include: {
+            //      model: Transaction,
+            //      attributes: ['id', 'date', 'type', 'user_id']
+            //     },
         });
 
         if(!checkingData) {
@@ -80,7 +80,7 @@ router.get('/savings', withAuth, async (req, res) => {
     try {
         const savingsData = await Savings.findbyPK(req.session.user_id, {
             attributes: ['id', 'balance', 'user_id'],
-            include: [{ model: Transaction }],
+            //include: [{ model: Transaction }],
         });
 
         if(!savingsData) {
@@ -123,50 +123,50 @@ router.get('/user', withAuth, async (req, res) => {
     }
 });
 
-router.get('/transaction', withAuth, async (req, res) => {
-    try {
-        const transactionData = await Transaction.findByPk(req.session.user_id, {
-            attributes: ['id', 'date', 'type', 'user_id'],
-            include: [
-            {
-                model: User,
-                attributes: { exclude: ['password'] }
-            },
-            {
-                model: Account,
-                attributes: { exclude: ['pin'] }
-            },
-            {
-                model: Savings,
-                attributes: ['id', 'balance', 'user_id']
-            },
-            {
-                model: Checking,
-                attributes: ['id', 'balance', 'user_id']
-            }
-        ],
-        })
+// router.get('/transaction', withAuth, async (req, res) => {
+//     try {
+//         const transactionData = await Transaction.findByPk(req.session.user_id, {
+//             attributes: ['id', 'date', 'type', 'user_id'],
+//             include: [
+//             {
+//                 model: User,
+//                 attributes: { exclude: ['password'] }
+//             },
+//             {
+//                 model: Account,
+//                 attributes: { exclude: ['pin'] }
+//             },
+//             {
+//                 model: Savings,
+//                 attributes: ['id', 'balance', 'user_id']
+//             },
+//             {
+//                 model: Checking,
+//                 attributes: ['id', 'balance', 'user_id']
+//             }
+//         ],
+//         })
 
-        if (!transactionData) {
-            res.status(404).json({ message: 'No transactions found check ID or log in.' });
-            return;
-        };
+//         if (!transactionData) {
+//             res.status(404).json({ message: 'No transactions found check ID or log in.' });
+//             return;
+//         };
 
-        const transaction = transactionData.get({ plain: true });
+//         const transaction = transactionData.get({ plain: true });
 
-        res.render('transaction', {
-            ...transaction,
-            logged_in: req.session.logged_in
-        });
+//         res.render('transaction', {
+//             ...transaction,
+//             logged_in: req.session.logged_in
+//         });
         
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 router.get('/login', (req, res) => {
     if(req.session.logged_in) {
-        res.redirect('/account');
+        res.redirect('/');
         return;
     }
 
