@@ -16,16 +16,16 @@ Information.init(
         },
         loanOfferInfo: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         checkingInfo: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         savingsInfo: {
             type: DataTypes.STRING,
-            allowNull: false,
-        },
+            allowNull: false
+        }
     },
     {
         sequelize,

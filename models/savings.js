@@ -30,7 +30,7 @@ Savings.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        modelName: 'savings',
+        modelName: 'savings'
     }
 );
 

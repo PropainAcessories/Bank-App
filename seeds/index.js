@@ -1,5 +1,5 @@
 const seedUsers = require('./user-seeds');
-// const seedTransactions = require('./transaction-seeds');
+const seedTransactions = require('./transaction-seeds');
 // const seedChecking = require('./checking-seeds');
 // const seedSavings = require('./savings-seeds');
 const seedAccounts = require('./account-seeds');
@@ -12,7 +12,7 @@ const seedDatabase = async () => {
     await seedInfo();
     await seedUsers();
     await seedAccounts();
-    // await seedTransactions();
+    await seedTransactions();
     // await seedChecking();
     // await seedSavings();
     process.exit(0);

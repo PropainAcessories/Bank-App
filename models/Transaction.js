@@ -11,12 +11,12 @@ Transaction.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        date: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+        // date: {
+        //     type: DataTypes.DATEONLY,
+        //     allowNull: false,
+        // },
         type: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         amount: {
@@ -25,8 +25,8 @@ Transaction.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'account',
-                key: 'id',
+                model: 'user',
+                key: 'id'
             }
         },
     },
