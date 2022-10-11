@@ -5,6 +5,11 @@ class Information extends Model {}
 
 Information.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true
+        },
         bankInfo: {
             type: DataTypes.STRING,
             allowNull: false,

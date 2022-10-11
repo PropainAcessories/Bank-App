@@ -25,7 +25,7 @@ User.init(
             },
         },
         user_type: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.STRING,
             allowNull: true,
             primaryKey: true,
         },
