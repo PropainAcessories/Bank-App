@@ -12,7 +12,7 @@ Transaction.init(
             autoIncrement: true,
         },
         date: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         type: {

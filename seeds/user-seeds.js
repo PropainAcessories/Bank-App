@@ -25,7 +25,7 @@ const userData =
         email: "KillPirates@OnePiece.com",
         user_type: "Manager",
         password: "420Justice69"
-    },
+    }
 ]
 
 const seedUsers = () => User.bulkCreate(userData);
