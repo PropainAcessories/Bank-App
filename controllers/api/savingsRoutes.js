@@ -61,6 +61,7 @@ router.put('/:id', withAuth, async (req, res) => {
         });
         if (!savingsData[0]) {
             res.status(404)({ message: 'Account not found check ID or login status' });
+            return;
         }
 
         res.status(200).json(savingsData);
