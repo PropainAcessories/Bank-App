@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Checking } = require('../../models');
+const { Checking, Transaction } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Re-Awaken when we are able to verify between customer and employee.
@@ -22,7 +22,11 @@ router.get('/:id', withAuth, async (req, res) => {
             where: {
                 id: req.params.id
             },
-            attributes: ['id', 'balance', 'user_id']
+            attributes: ['id', 'balance', 'user_id'],
+            include: { 
+                model: Transaction,
+                attributes: ['id', 'date', 'type', 'amount', 'user_id']
+            }
         });
 
         if (!checkingData) {
@@ -56,7 +60,6 @@ router.put('/:id', withAuth, async (req, res) => {
                 id: req.params.id
             }
         });
-
         if (!checkingData[0]) {
             res.status(404).json({ message: 'No account found with this ID to edit' });
             return;
@@ -68,7 +71,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete(':/id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const checkingData = await Checking.destroy({
             where: req.params.id
