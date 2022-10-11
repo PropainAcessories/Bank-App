@@ -9,7 +9,7 @@ Checking.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
         },
         balance: {
             type: DataTypes.DECIMAL,
@@ -22,7 +22,7 @@ Checking.init(
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
-                key: 'id',
+                key: 'id'
             }
         },
     },
@@ -30,7 +30,7 @@ Checking.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        modelName: 'checking',
+        modelName: 'checking'
     }
 );
 

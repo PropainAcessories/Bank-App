@@ -9,12 +9,19 @@ Account.init(
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
-            autoIncrement: true,
+            autoIncrement: true
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            },
+            allowNull: false
         },
         account_type: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         pin: {
             type: DataTypes.INTEGER,
@@ -23,12 +30,6 @@ Account.init(
                 len: [4, 4]
             }
         },
-        // user_id: {
-        //     references: {
-        //         model: 'user',
-        //         key: 'id',
-        //     }
-        // },
     },
     {
         hooks: {
@@ -44,7 +45,7 @@ Account.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        modelName: 'account',
+        modelName: 'account'
     }
 );
 

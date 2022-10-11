@@ -14,14 +14,14 @@ const userData =
         name: "Monkey D. Garp",
         email: "email@OnePiece.com",
         user_type: "Employee",
-        password: "1234567890"
+        password: "12345678901"
     },
     {
         id: 3,
         name: "Borsalino",
         email: "WhichWayIsTheCafeteria@OnePiece.com",
         user_type: "Customer",
-        password: "password"
+        password: "password123456"
     },
     {
         id: 4,

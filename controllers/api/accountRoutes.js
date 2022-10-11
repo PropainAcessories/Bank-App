@@ -4,18 +4,18 @@ const withAuth = require('../../utils/auth');
 
 // Re-AWAKEN when we are able to verify between employee and customer
 
-// router.get('/', withAuth, async (req, res) => {
-//     try {
-//         const accountData = await Account.findAll({
-//             attributes: { exclude: ['pin'] },
-//             order: [['id', 'ASC'],]
-//         });
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const accountData = await Account.findAll({
+            attributes: { exclude: ['pin'] },
+            order: [['id', 'ASC'],]
+        });
 
-//         res.status(200).json(accountData);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.status(200).json(accountData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get('/:id', withAuth, async (req, res) => {
     try {
