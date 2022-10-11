@@ -64,7 +64,7 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { email: req.body.email } });
+        const userData = await User.findOne({ where: { id: req.body.id } });
 
         if (!userData) {
             res.status(400).json({ message: 'Incorrect email/password try again.' });
@@ -88,7 +88,7 @@ router.post('/login', async (req, res) => {
         });
 
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err);
     }
 });
 
