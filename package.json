@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.2",
     "connect-session-sequelize": "^7.0.4",
     "dayjs": "^1.11.5",
