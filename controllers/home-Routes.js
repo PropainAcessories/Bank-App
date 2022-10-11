@@ -104,7 +104,6 @@ router.get('/user', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Account, attributes: { exclude: ['pin']} }],
         });
 
         if(!userData) {
@@ -123,46 +122,46 @@ router.get('/user', withAuth, async (req, res) => {
     }
 });
 
-// router.get('/transaction', withAuth, async (req, res) => {
-//     try {
-//         const transactionData = await Transaction.findByPk(req.session.user_id, {
-//             attributes: ['id', 'date', 'type', 'user_id'],
-//             include: [
-//             {
-//                 model: User,
-//                 attributes: { exclude: ['password'] }
-//             },
-//             {
-//                 model: Account,
-//                 attributes: { exclude: ['pin'] }
-//             },
-//             {
-//                 model: Savings,
-//                 attributes: ['id', 'balance', 'user_id']
-//             },
-//             {
-//                 model: Checking,
-//                 attributes: ['id', 'balance', 'user_id']
-//             }
-//         ],
-//         })
+router.get('/transaction', withAuth, async (req, res) => {
+    try {
+        const transactionData = await Transaction.findByPk(req.session.user_id, {
+            attributes: ['id', 'date', 'type', 'user_id'],
+            include: [
+            {
+                model: User,
+                attributes: { exclude: ['password'] }
+            },
+            {
+                model: Account,
+                attributes: { exclude: ['pin'] }
+            },
+            {
+                model: Savings,
+                attributes: ['id', 'balance', 'user_id']
+            },
+            {
+                model: Checking,
+                attributes: ['id', 'balance', 'user_id']
+            }
+        ],
+        })
 
-//         if (!transactionData) {
-//             res.status(404).json({ message: 'No transactions found check ID or log in.' });
-//             return;
-//         };
+        if (!transactionData) {
+            res.status(404).json({ message: 'No transactions found check ID or log in.' });
+            return;
+        };
 
-//         const transaction = transactionData.get({ plain: true });
+        const transaction = transactionData.get({ plain: true });
 
-//         res.render('transaction', {
-//             ...transaction,
-//             logged_in: req.session.logged_in
-//         });
+        res.render('transaction', {
+            ...transaction,
+            logged_in: req.session.logged_in
+        });
         
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get('/login', (req, res) => {
     if(req.session.logged_in) {
