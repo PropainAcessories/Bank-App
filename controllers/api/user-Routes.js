@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Account } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const userData = await User.findAll({
         attributes: { exclude: ['password'] },
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const userData = await User.findOne({
             attributes: { exclude: ['password'] },
@@ -101,6 +101,24 @@ router.post('/logout', (req, res) => {
         });
     } else {
         res.status(404).end();
+    }
+});
+
+router.put('/:id', withAuth, async (req, res) => {
+    try {
+        const userData = await User.update(req.body, {
+            where: {
+                id: req.params.id,
+            }
+        });
+        if (!userData[0]) {
+            res.status(404).json({ message: 'No User found check the ID in URL or login status.' });
+            return;
+        }
+
+        res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err);
     }
 });
 
