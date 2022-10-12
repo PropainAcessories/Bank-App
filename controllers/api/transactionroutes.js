@@ -2,19 +2,17 @@ const router = require('express').Router();
 const { Transaction } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Re-Awaken when there is verification between employee and customer
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const transactionData = await Transaction.findAll({
+            attributes: ['id', 'date', 'type', 'amount', 'user_id'],
+        });
 
-// router.get('/', withAuth, async (req, res) => {
-//     try {
-//         const transactionData = await Transaction.findAll({
-//             attributes: ['id', 'date', 'type', 'amount', 'user_id'],
-//         });
-
-//         res.status(200).json(transactionData);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.status(200).json(transactionData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get('/:id', withAuth, async (req, res) => {
     try {

@@ -4,7 +4,7 @@ module.exports = {
         return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(date).getFullYear}`;
     },
     isEmployee: employee => {
-        let isemployee = false;
+        const isemployee = false;
         if (!isemployee) {
             return employee = true;
         }

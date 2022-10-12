@@ -28,4 +28,8 @@ Transaction.hasOne(Account, {
     foreignKey: 'user_id'
 });
 
+Transaction.belongsTo(Account, {
+    foreignKey: 'user_id'
+})
+
 module.exports = { User, Account, Information, Transaction };

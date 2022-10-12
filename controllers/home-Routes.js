@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Account, Information, Savings, Checking } = require('../models');
+const { User, Account, Information, } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -50,55 +50,55 @@ router.get('/account', withAuth, async (req, res) =>{
     }
 });
 
-router.get('/checking', withAuth, async (req, res) => {
-    try {
-        const checkingData = await Checking.findByPk(req.session.user_id, {
-            attributes: ['id', 'balance', 'user_id'],
-            // include: {
-            //      model: Transaction,
-            //      attributes: ['id', 'date', 'type', 'user_id']
-            //     },
-        });
+// router.get('/checking', withAuth, async (req, res) => {
+//     try {
+//         const checkingData = await Checking.findByPk(req.session.user_id, {
+//             attributes: ['id', 'balance', 'user_id'],
+//             // include: {
+//             //      model: Transaction,
+//             //      attributes: ['id', 'date', 'type', 'user_id']
+//             //     },
+//         });
 
-        if(!checkingData) {
-            res.status(404).json({ message: 'No account found; log in or check id.' });
-            return;
-        }
+//         if(!checkingData) {
+//             res.status(404).json({ message: 'No account found; log in or check id.' });
+//             return;
+//         }
 
-        const checking = checkingData.get({ plain: true, });
+//         const checking = checkingData.get({ plain: true, });
 
-        res.render('checking', {
-            ...checking,
-            logged_in: true,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         res.render('checking', {
+//             ...checking,
+//             logged_in: true,
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
-router.get('/savings', withAuth, async (req, res) => {
-    try {
-        const savingsData = await Savings.findbyPK(req.session.user_id, {
-            attributes: ['id', 'balance', 'user_id'],
-            //include: [{ model: Transaction }],
-        });
+// router.get('/savings', withAuth, async (req, res) => {
+//     try {
+//         const savingsData = await Savings.findbyPK(req.session.user_id, {
+//             attributes: ['id', 'balance', 'user_id'],
+//             //include: [{ model: Transaction }],
+//         });
 
-        if(!savingsData) {
-            res.status(404).json({ message: 'no account found check your id or make sure you are logged in.' });
-            return;
-        };
+//         if(!savingsData) {
+//             res.status(404).json({ message: 'no account found check your id or make sure you are logged in.' });
+//             return;
+//         };
 
 
-        const savings = savingsData.get({ plain: true });
+//         const savings = savingsData.get({ plain: true });
 
-        res.render('savings', {
-            ...savings,
-            logged_in: true,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
+//         res.render('savings', {
+//             ...savings,
+//             logged_in: true,
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 router.get('/user', withAuth, async (req, res) => {
     try {
@@ -135,14 +135,6 @@ router.get('/transaction', withAuth, async (req, res) => {
                 model: Account,
                 attributes: { exclude: ['pin'] }
             },
-            {
-                model: Savings,
-                attributes: ['id', 'balance', 'user_id']
-            },
-            {
-                model: Checking,
-                attributes: ['id', 'balance', 'user_id']
-            }
         ],
         })
 
