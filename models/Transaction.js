@@ -11,14 +11,24 @@ Transaction.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        date: {
+        // date: {
+        //     type: DataTypes.DATEONLY,
+        //     allowNull: false,
+        // },
+        type: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        style: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        }
+        amount: {
+            type: DataTypes.DECIMAL,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
     },
     {
         sequelize,

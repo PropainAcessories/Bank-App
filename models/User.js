@@ -24,12 +24,8 @@ User.init(
                 isEmail: true,
             },
         },
-        employee: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-        },
-        customer: {
-            type: DataTypes.BOOLEAN,
+        user_type: {
+            type: DataTypes.STRING,
             allowNull: true,
         },
         password: {
@@ -54,7 +50,7 @@ User.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        modelName: 'user',
+        modelName: 'user'
     }
 );
 

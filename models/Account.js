@@ -10,11 +10,19 @@ Account.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
         },
-        accountType: {
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            },
+            allowNull: false
+        },
+        account_type: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         pin: {
             type: DataTypes.INTEGER,
@@ -31,14 +39,14 @@ Account.init(
                 return newUserData;
             },
             beforeUpdate: async (updatedUserData) => {
-                updatedUserData.pin = await bcrypt.hash(updatedUserData);
+                updatedUserData.pin = await bcrypt.hash(updatedUserData, 12);
                 return updatedUserData
             },
         },
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        modelName: 'account',
+        modelName: 'account'
     }
 );
 

@@ -1,48 +1,35 @@
 const User = require('./User');
 const Account = require('./Account');
-const Savings = require('./Savings');
-const Checking = require('./Checking');
-const Customer = require('./Customer');
-const Employee = require('./Employee');
+// const Savings = require('./Savings');
+// const Checking = require('./Checking');
 const Transaction = require('./Transaction');
+const Information = require('./Information');
 
-User.hasOne(Account, {
+
+User.hasMany(Account, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
+
+Account.hasOne(User, {
+    foreignKey: 'user_id',
+})
 
 Account.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-Account.hasMany(Checking, {
+Account.hasMany(Transaction, {
     foreignKey: 'user_id',
-    onDelete: 'CASCADE'
+    onDelete: 'CASCADE',
 });
 
-Account.hasMany(Savings, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE'
+Transaction.hasOne(Account, {
+    foreignKey: 'user_id'
 });
 
-Checking.belongsTo(Account, {
-    //
-});
+Transaction.belongsTo(Account, {
+    foreignKey: 'user_id'
+})
 
-Savings.belongsTo(Account, {
-    //
-});
-
-Transaction.belongsTo(Checking, Savings, {
-    //
-});
-
-Savings.hasMany(Transaction, {
-    //
-});
-
-Checking.hasMany(Transaction, {
-    //
-});
-
-module.exports = { User, Account, Savings, Checking, Customer, Employee, Transaction };
+module.exports = { User, Account, Information, Transaction };

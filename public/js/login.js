@@ -1,10 +1,33 @@
-//function for dropdown menu I think it will be on all javascript pages ig but im leaving it here for now currently The list is open by default so I have to figure out how to change that
-function dropDown(x) {
-  x.classList.toggle("change");
+const loginHandler = async (event) => {
+    event.preventDefault();
 
-  document.getElementById("myDropdown").style.display =
-    document.getElementById("myDropdown").style.display == "block"
-      ? "none"
-      : "block";
-}
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
 
+    if (!email || !password) {
+        alert("Fields empty.");
+        return
+    }
+
+    if (password.length < 10) {
+        alert("Password must be 10 characters");
+        return;
+    }
+
+    const response = await fetch('/api/user/login/', {
+        method: 'POST',
+        body: JSON.stringify({
+            email,
+            password
+        }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+        document.location.replace('/');
+    } else {
+        alert(response.statusText);
+    }
+};
+
+document.querySelector('.login-form').addEventListener('submit', loginHandler);
