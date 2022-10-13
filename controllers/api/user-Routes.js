@@ -18,7 +18,10 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const userData = await User.findByPk({
+        const userData = await User.findOne({
+            where: {
+                id: req.params.id
+            },
             attributes: { exclude: ['password'] }
         });
         if (!userData) {
@@ -26,7 +29,7 @@ router.get('/:id', async (req, res) => {
             return;
         }
 
-        res.json.status(200).json(userData);
+        res.status(200).json(userData);
     } catch (err) {
         res.status(500).json(err);
         console.log(err);
