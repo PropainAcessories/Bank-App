@@ -1,7 +1,5 @@
 const User = require('./User');
 const Account = require('./Account');
-// const Savings = require('./Savings');
-// const Checking = require('./Checking');
 const Transaction = require('./Transaction');
 const Information = require('./Information');
 

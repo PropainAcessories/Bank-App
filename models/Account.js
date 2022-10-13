@@ -16,13 +16,6 @@ Account.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        balance: {
-            type: DataTypes.DECIMAL,
-            allowNull: false,
-            validate: {
-                len: [-350, 150000]
-            }
-        },
         pin: {
             type: DataTypes.INTEGER,
             allowNull: false,

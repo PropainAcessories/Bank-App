@@ -4,7 +4,7 @@ const withAuth = require('../../utils/auth');
 
 // Re-AWAKEN when we are able to verify between employee and customer
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const accountData = await Account.findAll({
             attributes: { exclude: ['pin'] },
@@ -17,7 +17,7 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const accountData = await Account.findOne({
             attributes: { exclude: ['pin'] },
@@ -37,11 +37,12 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const accountData = await Account.create({
             id: req.body.id,
             account_type: req.body.account_type,
+            
             pin: req.body.pin,
             user_id: req.session.user_id,
         });
@@ -52,7 +53,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const accountData = await Account.update(req.body, {
             where: {

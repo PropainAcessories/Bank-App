@@ -18,19 +18,15 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const infoData = await Information.findOne({
             where: req.params.id
         });
-        if (!infoData[0]) {
-            res.status(404).json({ message: 'Nothing found' });
-            return;
-        }
-
         res.status(200).json(infoData);
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 })
 
