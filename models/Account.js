@@ -16,18 +16,18 @@ Account.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        balance: {
+            type: DataTypes.DECIMAL,
+            allowNull: false,
+            validate: {
+                len: [-350, 150000]
+            }
+        },
         pin: {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 len: [4, 4]
-            }
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
             }
         },
     },

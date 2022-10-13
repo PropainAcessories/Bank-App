@@ -7,7 +7,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const accountData = await Account.findAll({
-            attributes: { exclude: ['pin'] },
+            attributes: ['id','account_type', 'balance', 'user_id',{ exclude: ['pin'] }],
             order: [['id', 'ASC'],]
         });
 
@@ -37,12 +37,12 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const accountData = await Account.create({
             id: req.body.id,
             account_type: req.body.account_type,
-            
+            balance: req.body.balance,
             pin: req.body.pin,
             user_id: req.session.user_id,
         });
@@ -53,7 +53,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const accountData = await Account.update(req.body, {
             where: {
