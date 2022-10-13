@@ -1,46 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" href="./Assets/LuckyLucreIcon.png" />
+    <title>LuckyLucre</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bank App</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
-  rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
-  crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  {{#if logged_in}}
+    <header>
+      <nav>
+        <ul id="navList">
+          <div class="container" onclick="dropDown(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
 
-<body>
-    <div class="flex-column justify-space-around">
-        <header class="display-flex justify-space-between align-center p-2">
-            <h1>
-                <span></span>
-            </h1>
-            <nav class="navbar mt-2">
-                {{#if logged_in}}
-                <a href="/" class="navbar-item pt-1">Home</a>
-                <a href="/account/" class="navbar-item pt-1">Accounts</a>
-                <a href="/user/" class="navbar-item pt-1">Profile settings</a>
-                <button id="logout" class="button">Log-Out</button>
-                {{else}}
-                <a href="/" class="navbar-item pt-1">Home</a>
-                <a href="/login/">Log-In</a>
-                <a href="/signup/">Sign-Up</a>
-                {{/if}}
-            </nav>
-        </header>
-        <main class="container container-fluid mt-5">
-            {{{ body }}}
-        </main>
-        <footer>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="/" class="navbar-item pt-1">Home</a>
+              <a href="/account/" class="navbar-item pt-1">Accounts</a>
+              <a href="/user/" class="navbar-item pt-1">Profile settings</a>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </header>
 
-        </footer>
-    </div>
+    <button id="logout" class="button">Log-Out</button>
+  {{else}}
+    {{! <a href="/" class="navbar-item pt-1">Home</a>
+            <a href="/login/">Log-In</a>
+            <a href="/signup/">Sign-Up</a> }}
+   <body>
+    <header>
+      <nav>
+        <ul id="navList">
+          <div class="container" onclick="dropDown(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
 
-    {{#if logged_in}}
+            <div id="myDropdown" class="dropdown-content" style="display: none">
+              <a href="/">Home</a>
+              <a href="#">Deals</a>
+            </div>
+          </div>
+
+          <a href="/signup/" id="second" class="test">Sign Up</a>
+          <a href="/login/" id="first" class="test">Login</a>
+        </ul>
+      </nav>
+    </header>
+  </body>
+  {{/if}}
+
+  {{{body}}}
+
+  {{#if logged_in}}
     <script src="/js/logout.js"></script>
-    {{/if}}
-</body>
+  {{/if}}
+ <script src="/js/main.js"></script>
+
 
 </html>
