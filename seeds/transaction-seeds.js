@@ -8,7 +8,8 @@ const transactionData =
         balance: 200,
         type: "withdrawal",
         amount: 1000,
-        user_id: 1
+        user_id: 1,
+        account_id: 1,
     },
     {
         id: 2,
@@ -16,7 +17,8 @@ const transactionData =
         balance: 200,
         type: "deposit",
         amount: 1000,
-        user_id: 2
+        user_id: 2,
+        account_id: 2,
     },
     {
         id: 3,
@@ -24,7 +26,8 @@ const transactionData =
         balance: 200,
         type: "withdrawal",
         amount: 1000,
-        user_id: 3
+        user_id: 3,
+        account_id: 3,
     },
     {
         id: 4,
@@ -32,7 +35,8 @@ const transactionData =
         balance: 200,
         type: "deposit",
         amount: 1000,
-        user_id: 4
+        user_id: 4,
+        account_id: 4,
     },
 ]
 
