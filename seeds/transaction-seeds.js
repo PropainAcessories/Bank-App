@@ -5,6 +5,7 @@ const transactionData =
     {
         id: 1,
         date: "01/01/01",
+        balance: 200,
         type: "withdrawal",
         amount: 1000,
         user_id: 1
@@ -12,6 +13,7 @@ const transactionData =
     {
         id: 2,
         date: "01/01/01",
+        balance: 200,
         type: "deposit",
         amount: 1000,
         user_id: 2
@@ -19,6 +21,7 @@ const transactionData =
     {
         id: 3,
         date: "01/01/01",
+        balance: 200,
         type: "withdrawal",
         amount: 1000,
         user_id: 3
@@ -26,6 +29,7 @@ const transactionData =
     {
         id: 4,
         date: "01/01/01",
+        balance: 200,
         type: "deposit",
         amount: 1000,
         user_id: 4

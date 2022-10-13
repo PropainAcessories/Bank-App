@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { User, Account, Information, Transaction } = require('../models');
+const { User, Account, Transaction, Information } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const infoData = await Information.findAll({
          attributes: ['bankInfo', 'loanOfferInfo', 'checkingInfo', 'savingsInfo'],
