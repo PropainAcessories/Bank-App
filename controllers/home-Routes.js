@@ -53,9 +53,19 @@ router.get('/user', withAuth, async (req, res) => {
         const user = userData.get({ plain: true });
 
         res.render('user', {
-            ...user,
+            user,
             logged_in: true
         });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/createaccount', withAuth, async (req, res) =>{
+    try {
+        if (req.session.logged_in) {
+            res.render('create-account', {logged_in: true});
+        }
     } catch (err) {
         res.status(500).json(err);
     }
