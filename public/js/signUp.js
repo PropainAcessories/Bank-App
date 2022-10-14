@@ -6,6 +6,11 @@ const signUpHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
     const user_type = document.querySelector('#user-type').value.trim();
     //const passwordConfirm = document.querySelector('#confirm-password').value().trim();
+    
+    if (password.length < 10) {
+        alert("Password must be 10 characters");
+        return;
+    }
 
     if (email && name && user_type && password) {
         const response = await fetch('/api/user/signup', {
