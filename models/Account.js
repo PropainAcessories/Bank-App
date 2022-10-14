@@ -17,31 +17,29 @@ Account.init(
             allowNull: false
         },
         balance: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [-350, 150000]
             }
         },
         pin: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [4, 4]
             }
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
     },
     {
-        hooks: {
-            beforeCreate: async (newUserData) => {
-                newUserData.pin = await bcrypt.hash(newUserData.pin, 12);
-                return newUserData;
-            },
-            beforeUpdate: async (updatedUserData) => {
-                updatedUserData.pin = await bcrypt.hash(updatedUserData, 12);
-                return updatedUserData
-            },
-        },
         sequelize,
         timestamps: false,
         freezeTableName: true,
