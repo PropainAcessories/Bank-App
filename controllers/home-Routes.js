@@ -31,7 +31,7 @@ router.get('/account', withAuth, async (req, res) =>{
         const account = accountData.get({ plain: true });
 
         res.render('account', {
-            ...account,
+            account,
             logged_in: true
         });
     } catch (err) {
