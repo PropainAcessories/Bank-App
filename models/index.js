@@ -1,7 +1,6 @@
 const User = require('./User');
 const Account = require('./Account');
 const Transaction = require('./Transaction');
-const Information = require('./Information');
 
 
 User.hasMany(Account, {
@@ -31,4 +30,4 @@ Transaction.belongsTo(Account, {
     foreignKey: 'account_id'
 });
 
-module.exports = { User, Account, Information, Transaction };
+module.exports = { User, Account, Transaction };

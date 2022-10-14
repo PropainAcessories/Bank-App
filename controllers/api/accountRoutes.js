@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const { Account } = require('../../models');
 const withAuth = require('../../utils/auth');
+const bcrypt = require('bcrypt');
 
 // Re-AWAKEN when we are able to verify between employee and customer
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const accountData = await Account.findAll({
-            attributes: ['id','account_type', 'balance', 'user_id',{ exclude: ['pin'] }],
+            attributes: { exclude: ['pin'] },
             order: [['id', 'ASC'],]
         });
 
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const accountData = await Account.findOne({
             attributes: { exclude: ['pin'] },
@@ -29,6 +30,12 @@ router.get('/:id', async (req, res) => {
         if (!accountData) {
             res.status(404).json({ message: 'Account not found, check ID in URL or log in.' });
             return;
+        }
+
+        const correctPin = await bcrypt.compareSync(req.body.pin, accountData.pin);
+
+        if (!correctPin) {
+            res.status(400).json({ message: 'Incorrect Pin.' });
         }
 
         res.status(200).json(accountData);
