@@ -9,12 +9,12 @@ const createAccount = async (event) => {
         alert('Fields Empty');
     }
 
-    if (pin.length !== 4) {
+    if (pin.length > 4 || pin.length <= 3) {
         alert('Pin must be 4 numbers');
         return;
     }
 
-    const response = await fetch('/api/account/create', {
+    const response = await fetch('/api/account/', {
         method: 'POST',
         body: JSON.stringify({
             account_type,
@@ -25,7 +25,7 @@ const createAccount = async (event) => {
     });
 
     if(response.ok) {
-        document.location.replace('/accounts');
+        document.location.replace('/account');
     } else {
         alert(response.statusText);
     }

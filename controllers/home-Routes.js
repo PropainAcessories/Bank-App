@@ -17,13 +17,10 @@ router.get('/account', withAuth, async (req, res) =>{
     try {
         const accountData = await Account.findByPk(req.session.user_id, {
             attributes: { exclude: ['pin'] },
-            include: [
-                { model: Savings, attributes: { exclude: ['balance'] } },
-                { model: Checking, attributes: { exclude: ['balance'] } }],
         });
 
         if(!accountData) {
-            res.status(404).json({ message: 'no account found check your id or make sure you are logged in.' });
+            res.status(404).json({ message: 'no account found check your id or make sure you are logged in.; or create a bank account' });
             return;
         };
 
@@ -36,6 +33,7 @@ router.get('/account', withAuth, async (req, res) =>{
         });
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 });
 

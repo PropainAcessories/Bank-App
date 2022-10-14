@@ -11,10 +11,6 @@ Transaction.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        // date: {
-        //     type: DataTypes.DATEONLY,
-        //     allowNull: false,
-        // },
         type: {
             type: DataTypes.STRING,
             allowNull: false,
