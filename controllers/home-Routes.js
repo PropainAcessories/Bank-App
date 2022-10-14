@@ -1,26 +1,15 @@
 const router = require('express').Router();
-const { User, Account, Transaction, Information } = require('../models');
+const { User, Account, Transaction } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-        const infoData = await Information.findAll({
-         attributes: ['bankInfo', 'loanOfferInfo', 'checkingInfo', 'savingsInfo'],
-        });
-
-        if (!infoData) {
-            res.status(404).json({ message: 'Site down somehow LOL' });
-            return;
-        };
-
-        const information = infoData.map((information) => information.get({ plain: true }));
-        
         res.render('homepage', {
-            information,
             logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 });
 
@@ -42,7 +31,7 @@ router.get('/account', withAuth, async (req, res) =>{
         const account = accountData.get({ plain: true });
 
         res.render('account', {
-            ...account,
+            account,
             logged_in: true
         });
     } catch (err) {
@@ -64,9 +53,19 @@ router.get('/user', withAuth, async (req, res) => {
         const user = userData.get({ plain: true });
 
         res.render('user', {
-            ...user,
+            user,
             logged_in: true
         });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/createaccount', withAuth, async (req, res) =>{
+    try {
+        if (req.session.logged_in) {
+            res.render('create-account', {logged_in: true});
+        }
     } catch (err) {
         res.status(500).json(err);
     }
