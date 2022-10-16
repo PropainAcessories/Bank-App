@@ -2,6 +2,7 @@ const seedUsers = require('./user-seeds');
 const seedTransactions = require('./transaction-seeds');
 const seedAccounts = require('./account-seeds');
 
+
 const sequelize = require('../config/connection');
 
 const seedDatabase = async () => {

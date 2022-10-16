@@ -15,8 +15,11 @@ router.get('/', async (req, res) => {
 
 router.get('/account', withAuth, async (req, res) =>{
     try {
-        const accountData = await Account.findByPk(req.session.user_id, {
-            attributes: { exclude: ['pin'] },
+        const accountData = await Account.findOne({
+            where: {
+                id: req.params.id
+            },
+            attributes: ['id', 'account_type', 'balance'],
         });
 
         if(!accountData) {
@@ -29,7 +32,7 @@ router.get('/account', withAuth, async (req, res) =>{
 
         res.render('account', {
             account,
-            logged_in: true
+           logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
@@ -52,7 +55,7 @@ router.get('/user', withAuth, async (req, res) => {
 
         res.render('user', {
             user,
-            logged_in: true
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
@@ -72,7 +75,7 @@ router.get('/createaccount', withAuth, async (req, res) =>{
 router.get('/transaction', withAuth, async (req, res) => {
     try {
         const transactionData = await Transaction.findByPk(req.session.user_id, {
-            attributes: ['id', 'date', 'type', 'user_id'],
+            attributes: ['id', 'date', 'type'],
             include: [
             {
                 model: User,

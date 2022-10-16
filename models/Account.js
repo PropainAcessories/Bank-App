@@ -17,7 +17,7 @@ Account.init(
             allowNull: false
         },
         balance: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 len: [-350, 150000]
@@ -32,7 +32,6 @@ Account.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'
