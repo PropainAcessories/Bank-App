@@ -57,13 +57,17 @@ router.post('/', withAuth, async (req, res) => {
 
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        const accountData = await Account.update(req.body, {
+        const accountData = await Account.update({
+            balance: req.body.balance,
+            pin: req.body.pin
+        },
+        {
             where: {
-                id: req.params.id,
+                id: req.params.id
             }
         });
 
-        if (!accountData[0]) {
+        if (!accountData) {
             res.status(404).json({ message: 'No account found check the ID in URL or log in.' });
             return;
         }

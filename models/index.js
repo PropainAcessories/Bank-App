@@ -27,6 +27,7 @@ User.hasMany(Transaction, {
 
 Transaction.belongsTo(Account, {
     foreignKey: 'account_id'
-})
+});
+
 
 module.exports = { User, Account, Transaction };

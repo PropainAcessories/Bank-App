@@ -32,7 +32,7 @@ router.get('/account', withAuth, async (req, res) =>{
 
         res.render('account', {
             account,
-            logged_in: true
+           logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
@@ -55,7 +55,7 @@ router.get('/user', withAuth, async (req, res) => {
 
         res.render('user', {
             user,
-            logged_in: true
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
