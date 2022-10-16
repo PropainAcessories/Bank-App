@@ -15,8 +15,11 @@ router.get('/', async (req, res) => {
 
 router.get('/account', withAuth, async (req, res) =>{
     try {
-        const accountData = await Account.findByPk(req.session.user_id, {
-            attributes: { exclude: ['pin'] },
+        const accountData = await Account.findOne({
+            where: {
+                id: req.params.id
+            },
+            attributes: ['id', 'account_type', 'balance'],
         });
 
         if(!accountData) {
@@ -72,7 +75,7 @@ router.get('/createaccount', withAuth, async (req, res) =>{
 router.get('/transaction', withAuth, async (req, res) => {
     try {
         const transactionData = await Transaction.findByPk(req.session.user_id, {
-            attributes: ['id', 'date', 'type', 'user_id'],
+            attributes: ['id', 'date', 'type'],
             include: [
             {
                 model: User,

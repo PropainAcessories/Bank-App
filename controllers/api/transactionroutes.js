@@ -2,25 +2,26 @@ const router = require('express').Router();
 const { Transaction } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const transactionData = await Transaction.findAll({
-            attributes: ['id', 'date', 'type', 'amount', 'user_id'],
+            attributes: ['id', 'type', 'amount', 'user_id', 'account_id'],
         });
 
         res.status(200).json(transactionData);
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 });
 
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const transactionData = await Transaction.findOne({
             where: {
                 id: req.params.id
             },
-            attributes: ['id', 'date', 'type', 'amount', 'user_id'],
+            attributes: ['id', 'type', 'amount', 'user_id', 'account_id'],
         });
         if(!transactionData) {
             res.status(404).json({ message: 'No transaction found try again' });
@@ -33,18 +34,19 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 })
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const transactionData = await Transaction.create({
-            date: req.body.date,
             type: req.body.type,
             amount: req.body.amount,
-            user_id: req.session.user_id
+            user_id: req.session.user_id,
+            account_id: req.body.account_id,
         });
 
         res.status(200).json(transactionData);
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 });
 
