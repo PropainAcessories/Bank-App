@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 router.get('/account', withAuth, async (req, res) =>{
     try {
-        const accountData = await Account.findByPk(req.session.user_id, {
+        const accountData = await Account.findAll({
             where: {
                 user_id: req.session.user_id
             },
@@ -31,11 +31,11 @@ router.get('/account', withAuth, async (req, res) =>{
             return;
         };
 
-
-        const account = accountData.get({ plain: true });
+        console.log(accountData);
+        const accounts = accountData.map((accounts) => accounts.get({ plain: true }));
 
         res.render('account', {
-            ...account,
+            accounts,
            logged_in: req.session.logged_in
         });
     } catch (err) {
@@ -66,8 +66,6 @@ router.get('/account/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-// router.get('/transaction', withAuth, a)
 
 router.get('/user', withAuth, async (req, res) => {
     try {
@@ -103,7 +101,7 @@ router.get('/createaccount', withAuth, async (req, res) =>{
 
 router.get('/transaction', withAuth, async (req, res) => {
     try {
-        const transactionData = await Transaction.findByPk(req.session.user_id, {
+        const transactionData = await Transaction.findByPk(req.session.account_id, {
             attributes: ['id', 'date', 'type'],
             include: [
             {
