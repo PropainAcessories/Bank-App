@@ -94,7 +94,7 @@ router.get('/user', withAuth, async (req, res) => {
 router.get('/createaccount', withAuth, async (req, res) =>{
     try {
         if (req.session.logged_in) {
-            res.render('create-account', {logged_in: true});
+            res.render('create-account', {logged_in: req.session.logged_in});
         }
     } catch (err) {
         res.status(500).json(err);
@@ -136,7 +136,7 @@ router.get('/transaction', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
     if(req.session.logged_in) {
-        res.redirect('/homepage');
+        res.redirect('/');
         return;
     }
 
@@ -145,7 +145,7 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/homepage');
+        res.redirect('/');
         return;
     }
 
