@@ -11,21 +11,20 @@ Account.belongsTo(User, {
     onDelete: 'CASCASDE'
 });
 
-Account.hasMany(Transaction, {
-    foreignKey: 'account_id',
-    onDelete: 'CASCADE',
-});
-
 Transaction.belongsTo(User, {
     foreignKey: 'user_id'
+});
+
+Transaction.belongsTo(Account, {
+    foreignKey: 'account_id'
 });
 
 User.hasMany(Transaction, {
     foreignKey: 'account_id',
     onDelete: 'Cascade',
-})
+});
 
-Transaction.belongsTo(Account, {
+Account.hasMany(Transaction, {
     foreignKey: 'account_id'
 });
 
