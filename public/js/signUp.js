@@ -5,7 +5,7 @@ const signUpHandler = async (event) => {
     const name = document.querySelector('#name-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const user_type = document.querySelector('#user-type').value.trim();
-    //const passwordConfirm = document.querySelector('#confirm-password').value().trim();
+
     
     if (password.length < 10) {
         alert("Password must be 10 characters");
@@ -18,8 +18,8 @@ const signUpHandler = async (event) => {
             body: JSON.stringify({
                 email,
                 name,
-                user_type,
-                password
+                password,
+                user_type             
             }),
             headers: { 'Content-Type': 'application/json' },
         });
