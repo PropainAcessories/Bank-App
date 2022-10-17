@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 router.get('/account', withAuth, async (req, res) =>{
     try {
-        const accountData = await Account.findOne({
+        const accountData = await Account.findByPk(req.session.user_id, {
             where: {
                 user_id: req.session.user_id
             },
@@ -43,6 +43,16 @@ router.get('/account', withAuth, async (req, res) =>{
         console.log(err);
     }
 });
+
+router.get('/account/:id', withAuth, async (req, res) => {
+    try {
+        const accountData = await Account.findOne(req.params.id, {
+            
+        })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 router.get('/user', withAuth, async (req, res) => {
     try {
