@@ -14,7 +14,7 @@ const loginHandler = async (event) => {
         return;
     }
 
-    const response = await fetch('/api/user/login/', {
+    const response = await fetch('/api/user/login', {
         method: 'POST',
         body: JSON.stringify({
             email,

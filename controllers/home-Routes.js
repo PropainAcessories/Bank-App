@@ -46,13 +46,28 @@ router.get('/account', withAuth, async (req, res) =>{
 
 router.get('/account/:id', withAuth, async (req, res) => {
     try {
-        const accountData = await Account.findOne(req.params.id, {
-            
-        })
+        const accountData = await Account.findOne({
+            where: {
+                id: req.params.id
+            },
+            attributes: ['account_type', 'balance'],
+            include: {
+                model: Transaction,
+                attributes: ['type', 'amount']
+            },
+        });
+
+        const account = accountData.get({ plain: true });
+        res.render('single-account', {
+            account,
+            logged_in: req.session.logged_in,
+        });
     } catch (err) {
         res.status(500).json(err);
     }
-})
+});
+
+// router.get('/transaction', withAuth, a)
 
 router.get('/user', withAuth, async (req, res) => {
     try {
