@@ -57,14 +57,8 @@ router.post('/', withAuth, async (req, res) => {
 
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        const accountData = await Account.update({
-            balance: req.body.balance,
-            pin: req.body.pin
-        },
-        {
-            where: {
-                id: req.params.id
-            }
+        const accountData = await Account.update(req.body, {
+            where: req.params.id
         });
 
         if (!accountData) {
@@ -81,7 +75,7 @@ router.put('/:id', withAuth, async (req, res) => {
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const accountData = await Account.destroy({
-            where: req.params.id
+            where: req.body.id
         });
         if (!accountData) {
             res.status(404).json({ message: 'Account not found.' });

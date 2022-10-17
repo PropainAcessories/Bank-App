@@ -18,6 +18,13 @@ Transaction.init(
         amount: {
             type: DataTypes.DECIMAL,
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            },
+        },
         account_id: {
             type: DataTypes.INTEGER,
             references: {

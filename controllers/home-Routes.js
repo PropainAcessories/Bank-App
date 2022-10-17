@@ -17,9 +17,13 @@ router.get('/account', withAuth, async (req, res) =>{
     try {
         const accountData = await Account.findOne({
             where: {
-                id: req.params.id
+                user_id: req.session.user_id
             },
-            attributes: ['id', 'account_type', 'balance'],
+            attributes: { exclude: ['pin'] },
+            include: [{
+                model: Transaction,
+                attributes: ['id', 'type', 'amount']
+            }]
         });
 
         if(!accountData) {
@@ -31,7 +35,7 @@ router.get('/account', withAuth, async (req, res) =>{
         const account = accountData.get({ plain: true });
 
         res.render('account', {
-            account,
+            ...account,
            logged_in: req.session.logged_in
         });
     } catch (err) {
