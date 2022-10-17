@@ -67,6 +67,8 @@ router.get('/account/:id', withAuth, async (req, res) => {
     }
 });
 
+// router.get('/transaction', withAuth, a)
+
 router.get('/user', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
