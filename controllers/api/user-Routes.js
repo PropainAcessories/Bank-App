@@ -92,32 +92,30 @@ router.post('/logout', (req, res) => {
     }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
-    try {
-        const userData = await User.update(req.body, {
-            where: {
-                id: req.params.id,
-            }
-        });
-        if (!userData[0]) {
-            res.status(404).json({ message: 'No User found check the ID in URL or login status.' });
-            return;
+router.put('/:id', (req, res) => {
+    console.log('hello_world')
+    User.update(req.body, {
+        where: {
+           id: req.params.id
         }
-        res.status(200).json(userData);
-    } catch (err) {
+    }).then((user) => {console.log(user); res.status(200).json(user)}).catch((err) => {
         res.status(500).json(err);
+        console.log(err);
+    })
     }
-});
+);
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         userData = await User.destroy({
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         });
+        res.status(200).json(userData);
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 });
 

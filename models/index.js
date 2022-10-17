@@ -8,7 +8,6 @@ User.hasMany(Account, {
 
 Account.belongsTo(User, {
     foreignKey: 'user_id',
-    onDelete: 'CASCASDE'
 });
 
 Transaction.belongsTo(User, {
@@ -16,12 +15,11 @@ Transaction.belongsTo(User, {
 });
 
 Transaction.belongsTo(Account, {
-    foreignKey: 'account_id'
+    foreignKey: 'account_id',
 });
 
 User.hasMany(Transaction, {
     foreignKey: 'account_id',
-    onDelete: 'Cascade',
 });
 
 Account.hasMany(Transaction, {

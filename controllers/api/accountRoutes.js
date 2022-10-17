@@ -60,12 +60,11 @@ router.put('/:id', withAuth, async (req, res) => {
         const accountData = await Account.update(req.body, {
             where: req.params.id
         });
-
+        console.log(accountData);
         if (!accountData) {
             res.status(404).json({ message: 'No account found check the ID in URL or log in.' });
             return;
         }
-
         res.status(200).json(accountData);
     } catch (err) {
         res.status(500).json(err);
