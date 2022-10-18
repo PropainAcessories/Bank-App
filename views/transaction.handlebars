@@ -1,10 +1,8 @@
-<section class="container">
+<section class="container text-white">
     <section class="transaction">
         {{#each transactions as |transaction|}}
-        <a href="/transaction/{{transaction.id}}">
             <h3>{{transaction.type}}</h3>
             <h5>{{transaction.amount}}</h5>
-        </a>
         {{/each}}
     </section>
 </section>
