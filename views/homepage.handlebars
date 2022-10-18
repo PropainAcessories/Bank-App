@@ -1,31 +1,53 @@
+<header>
+  <nav>
+    <ul id="navList">
+      <div class="container" onclick="dropDown(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
 
-      <div>
-        <div id="jumbo" class="container-xxl">
-          <h1><span class="enjoy">Enjoy!</span></h1><img class="logo" src="/Assets/luckyLucreShortend.png" alt="luckylucre">
-          <h1 class="offer">$500</h1> 
-          <div class="promo">
-            <h3>New <span class="green">Lucky Lucre</span><br />Checking Customers!</h3>
-            <p>
-              Open a Lucky Lucre Platinum Checking account and deposit any
-              amount!
-            </p>
-            <a href="/signup/" class="start">Get Started!</a>
-          </div>
-         
+        <div id="myDropdown" class="dropdown-content" style="display: none">
+          <a href="/">Home</a>
+          <a href="#">Deals</a>
         </div>
-      
-      {{!-- info section --}}
-      <h1 class="hr1">LuckyLucre</h1>
-        <div id="infoportion" class="container-xxl">
-          <p class="secure">Securely Send and Save Lucre</p>
-          <h2 class="slogan">Banking has never been <span class="green">Luckier</span></h2>
-          <p class="zelle">Send Lucre easily through Zelle, and enjoy our Lucky yield savings rates at 5.29%APY <br> 
-          using the LuckyLucre Black Savings account!</p>
-          <p class="invite">*LuckyLucre Black Savings Account is invite only</p>
-        </div>
+      </div>
 
-        </div>
-        {{!-- take screen shot and add here as the examples page --}}
-       
-      
-   
+      <a href="/signup/" id="second" class="test">Sign Up</a>
+      <a href="/login/" id="first" class="test">Login</a>
+    </ul>
+  </nav>
+</header>
+<div>
+  <div id="jumbo" class="container-xxl">
+    <h1><span class="enjoy">Enjoy!</span></h1><img
+      class="logo"
+      src="/Assets/luckyLucreShortend.png"
+      alt="luckylucre"
+    />
+    <h1 class="offer">$500</h1>
+    <div class="promo">
+      <h3>New
+        <span class="green">Lucky Lucre</span><br />Checking Customers!</h3>
+      <p>
+        Open a Lucky Lucre Platinum Checking account and deposit any amount!
+      </p>
+      <a href="/signup/" class="start">Get Started!</a>
+    </div>
+
+  </div>
+
+  {{! info section }}
+  <h1 class="hr1">LuckyLucre</h1>
+  <div id="infoportion" class="container-xxl">
+    <p class="secure">Securely Send and Save Lucre</p>
+    <h2 class="slogan">Banking has never been
+      <span class="green">Luckier</span></h2>
+    <p class="zelle">Send Lucre easily through Zelle, and enjoy our Lucky yield
+      savings rates at 5.29%APY
+      <br />
+      using the LuckyLucre Black Savings account!</p>
+    <p class="invite">*LuckyLucre Black Savings Account is invite only</p>
+  </div>
+
+</div>
+{{! take screen shot and add here as the examples page }}
