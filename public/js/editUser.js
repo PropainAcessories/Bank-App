@@ -1,7 +1,7 @@
 const editProfile = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('email-edit').value.trim();
+    const email = document.querySelector('#email-edit').value.trim();
     const name = document.querySelector('#name-edit').value.trim();
     const password = document.querySelector('#password-edit').value.trim();
 
@@ -11,7 +11,7 @@ const editProfile = async (event) => {
     }
 
     if(email && name && password) {
-        const response = await fetch('/api/user/', {
+        const response = await fetch('/api/user/' + `${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 email: email.value,
