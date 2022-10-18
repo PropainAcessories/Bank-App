@@ -20,10 +20,6 @@ router.get('/account', withAuth, async (req, res) =>{
                 user_id: req.session.user_id
             },
             attributes: { exclude: ['pin'] },
-            include: [{
-                model: Transaction,
-                attributes: ['id', 'type', 'amount']
-            }]
         });
 
         if(!accountData) {
@@ -50,10 +46,10 @@ router.get('/account/:id', withAuth, async (req, res) => {
             where: {
                 id: req.params.id
             },
-            attributes: ['account_type', 'balance'],
+            attributes: ['id', 'account_type', 'balance'],
             include: {
                 model: Transaction,
-                attributes: ['type', 'amount']
+                attributes: ['type', 'amount', 'id']
             },
         });
 
@@ -99,10 +95,13 @@ router.get('/createaccount', withAuth, async (req, res) =>{
     }
 });
 
-router.get('/transaction', withAuth, async (req, res) => {
+router.get('/transaction/:id', withAuth, async (req, res) => {
     try {
-        const transactionData = await Transaction.findByPk(req.session.account_id, {
-            attributes: ['id', 'date', 'type'],
+        const transactionData = await Transaction.findAll({
+            where: {
+                id: req.params.id
+            },
+            attributes: ['id', 'type', 'amount'],
             include: [
             {
                 model: User,
@@ -120,15 +119,16 @@ router.get('/transaction', withAuth, async (req, res) => {
             return;
         };
 
-        const transaction = transactionData.get({ plain: true });
+        const transactions = transactionData.map((transactions) => transactions.get({ plain: true }));
 
         res.render('transaction', {
-            ...transaction,
+            transactions,
             logged_in: req.session.logged_in
         });
         
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 });
 
