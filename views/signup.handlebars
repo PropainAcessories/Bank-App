@@ -1,26 +1,74 @@
-<div class="column">
-    <h2 class="title pb-4"> Create New Account</h2>
-    <form class="signup-form">
-        <div>
-            <label for="email-signup">Email:</label>
-            <input type="text" id="email-signup" />
+
+<a href="/">
+  <img
+    class="loginlogo"
+    src="/Assets/luckylucrecondensed.png"
+    alt="luckylucrelogo"
+  /></a>
+
+<div class="container" id="loginContainer">
+  <h2 class="loginh2">Lucky Sign-Up</h2>
+  <form class="signup-form">
+    <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="email-signup" />
+      </span>
+      <span class="floating-label">Email Address</span>
+    </div>
+    <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="name-signup" />
+      </span>
+      <span class="floating-label">Name</span>
+    </div>
+     <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="password-signup"  />
+      </span>
+      <span class="floating-label">Password</span>
+    </div>
+     <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="user-type" />
+      </span>
+      <span class="floating-label">User Type</span>
+    </div>
+
+
+    <button type="submit" class="loginButton">
+      <div class="center-con">
+        <div class="round">
+          <span class="arrow"></span>
+          <span class="arrow"></span>
+          <span class="arrow"></span>
+          <span class="arrow"></span>
         </div>
-        <div>
-            <label for="name-signup">Name:</label>
-            <input type="text" id="name-signup" />
-        </div>
-        <div>
-            <label for="password-signup">Password:</label>
-            <input type="password" id="password-signup" />
-        </div>
-        <div>
-            <label for="user-type">User Type:</label>
-            <input type="text" id="user-type" />
-        </div>
-        <div>
-            <button type="submit" class="button">Sign-Up</button>
-        </div>
-    </form>
+      </div>
+      </button>
+  </form>
+  <div class="signUphref">
+    <p class="signUphref">Already Have an Account?</p>
+    <a href="/login" class="signUphref">Click here to Log In!</a>
+  </div>
 </div>
+<h1 class="hr1">LuckyLucre</h1>
+<footer class="quote">
+  <h3 class="quoteword">"<span class="green">Luck</span>
+    is a Dividend of
+    <span class="green">LuckyLucre</span>. The more you bank with
+    <span class="green">LuckyLucre</span>, the
+    <span class="green">Luckier you get</span>.
+    <br />
+    Keep banking with
+    <span class="green">LuckyLucre"</span></h3>
+  <h4 class="quoteword">Sam Song</h4>
+  <h5 class="quoteword">Chairperson & CEO, LuckyLucre</h5>
+
+</footer>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+></script>
 
 <script src="/js/signUp.js"></script>
+
+
