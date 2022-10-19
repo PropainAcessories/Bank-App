@@ -29,6 +29,7 @@ const loginHandler = async (event) => {
         alert(response.statusText);
     }
 };
+document.querySelector('.login-form').addEventListener('submit', loginHandler);
 
 // Function for input animation
 $(function(){
@@ -41,4 +42,4 @@ $(function(){
           }
       });
   });
-document.querySelector('.login-form').addEventListener('submit', loginHandler);
+
