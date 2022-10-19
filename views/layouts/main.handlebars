@@ -8,33 +8,20 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-    />
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="icon" href="./Assets/LuckyLucreIcon.png" />
-    <title>LuckyLucre</title>
+    <title>Bank X-press</title>
   </head>
 
 
   {{#if logged_in}}
     <header>
       <nav>
-        <ul id="navList">
-          <div class="container" onclick="dropDown(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-
-            <div id="myDropdown" class="dropdown-content">
-              <a href="/" class="navbar-item pt-1">Home</a>
-              <a href="/account/" class="navbar-item pt-1">Accounts</a>
-              <a href="/user/" class="navbar-item pt-1">Profile settings</a>
-              <a href="/createaccount/" class="navbar-item pt-1">Create Account</a>
-            </div>
+          <div>
+            <a href="/" class="navbar-item pt-1">Home</a>
+            <a href="/account/" class="navbar-item pt-1">Accounts</a>
+            <a href="/user/" class="navbar-item pt-1">Profile settings</a>
+            <a href="/createaccount/" class="navbar-item pt-1">Create Account</a>
           </div>
-        </ul>
       </nav>
     </header>
     <button id="logout" class="button">Log-Out</button>
@@ -43,23 +30,6 @@
     {{!-- nav bar stuff --}}
       <header>
         <nav>
-          <ul id="navList">
-            <div class="container" onclick="dropDown(this)">
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-
-
-              <div
-                id="myDropdown"
-                class="dropdown-content"
-                style="display: none"
-              >
-                <a href="/">Home</a>
-                <a href="#">Deals</a>
-              </div>
-            </div>
-
             <a href="/signup/" id="second" class="test">Sign Up</a>
             <a href="/login/" id="first" class="test">Login</a>
           </ul>
