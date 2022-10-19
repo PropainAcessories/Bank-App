@@ -101,7 +101,6 @@ router.get('/transaction/:id', withAuth, async (req, res) => {
             where: {
                 id: req.params.id
             },
-            attributes: ['id', 'type', 'amount'],
             include: [
             {
                 model: User,

@@ -55,10 +55,12 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const accountData = await Account.update(req.body, {
-            where: req.params.id
+            where: {
+                id: req.params.id
+            }
         });
         console.log(accountData);
         if (!accountData) {
@@ -68,6 +70,7 @@ router.put('/:id', withAuth, async (req, res) => {
         res.status(200).json(accountData);
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 });
 
