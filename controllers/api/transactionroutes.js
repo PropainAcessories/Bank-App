@@ -1,11 +1,16 @@
 const router = require('express').Router();
 const { Transaction } = require('../../models');
 const withAuth = require('../../utils/auth');
+const dayjs = require('dayjs');
+
+let now = dayjs().format('MMMM-DD-YYYY').toString();
+
+console.log(now);
+
 
 router.get('/', async (req, res) => {
     try {
         const transactionData = await Transaction.findAll({
-            attributes: ['id', 'type', 'amount', 'user_id', 'account_id'],
         });
 
         res.status(200).json(transactionData);
@@ -21,7 +26,6 @@ router.get('/:id', async (req, res) => {
             where: {
                 id: req.params.id
             },
-            attributes: ['id', 'type', 'amount', 'user_id', 'account_id'],
         });
         if(!transactionData) {
             res.status(404).json({ message: 'No transaction found try again' });
@@ -39,6 +43,7 @@ router.post('/', async (req, res) => {
         const transactionData = await Transaction.create({
             type: req.body.type,
             amount: req.body.amount,
+            date: now,
             user_id: req.session.user_id,
             account_id: req.body.account_id,
         });
