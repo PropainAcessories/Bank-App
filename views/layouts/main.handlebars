@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link rel="icon" href="/Assets/LuckyLucreIcon.png" />
     <title>LuckyLucre</title>
   </head>
@@ -40,9 +40,9 @@
     </header>
     
   {{else}}
-
-    {{!-- nav bar stuff --}}
-      <header>
+    {{{header}}}
+    {{!-- nav bar stuff
+      {{!-- <header>
         <nav>
           <ul id="navList">
             <div class="container" onclick="dropDown(this)">
@@ -50,7 +50,7 @@
               <div class="bar2"></div>
               <div class="bar3"></div>
 
-
+     
               <div
                 id="myDropdown"
                 class="dropdown-content"
@@ -65,8 +65,8 @@
             <a href="/login/" id="first" class="test">Login</a>
           </ul>
         </nav>
-      </header>
-     
+      </header> --}}
+      --}}
   {{/if}}
 
   {{{body}}}
