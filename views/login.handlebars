@@ -1,56 +1,18 @@
-<a href="/">
-  <img
-    class="loginlogo"
-    src="/Assets/luckylucrecondensed.png"
-    alt="luckylucrelogo"
-  /></a>
-
-<div class="container" id="loginContainer">
-  <h2 class="loginh2">Log In</h2>
-  <form>
-    <div class="parents-elm">
-      <span class="inputBox">
-        <input type="text" class="inputText" id="email-login" />
-      </span>
-      <span class="floating-label">Email Address</span>
-    </div>
-    <div class="parents-elm">
-      <span class="inputBox">
-        <input type="text" class="inputText" id="password-login" />
-      </span>
-      <span class="floating-label">Password</span>
-    </div>
-
-    <button type="submit" class="loginButton" id="login">
-      <div class="center-con">
-        <div class="round">
-          <span class="arrow"></span>
-          <span class="arrow"></span>
-          <span class="arrow"></span>
-          <span class="arrow"></span>
+<div class="column">
+    <h2 class="title pb-4">LogIn:</h2>
+    <form class="login-form">
+        <div>
+            <label for="email-login">E-mail:</label>
+            <input type="text" id="email-login" />
         </div>
-      </div></button>
-  </form>
-  <div class="signUphref">
-    <p class="signUphref">Don't have an account?</p>
-    <a href="/signup" class="signUphref">Click here to sign up!</a>
-  </div>
+        <div>
+            <label for="password-login">Password:</label>
+            <input type="password" id="password-login" />
+        </div>
+        <div>
+            <button type="submit" class="button" id="login">Log In.</button>
+        </div>
+    </form>
 </div>
-<h1 class="hr1">LuckyLucre</h1>
-<footer class="quote">
-  <h3 class="quoteword">"<span class="green">Luck</span>
-    is a Dividend of
-    <span class="green">LuckyLucre</span>. The more you bank with
-    <span class="green">LuckyLucre</span>, the
-    <span class="green">Luckier you get</span>.
-    <br />
-    Keep banking with
-    <span class="green">LuckyLucre"</span></h3>
-  <h4 class="quoteword">Sam Song</h4>
-  <h5 class="quoteword">Chairperson & CEO, LuckyLucre</h5>
 
-</footer>
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
-></script>
 <script src="/js/login.js"></script>
