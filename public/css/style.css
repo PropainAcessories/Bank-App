@@ -5,12 +5,9 @@ html {
   font-family: "lato", sans-serif;
 }
 /* gradient. still kinda tinkering with it to find the perfect combo ig xd */
-
 body {
-  animation: fadeInAnimation ease-in-out 2s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
   height: 100%;
+  background: gray;
   background-image: linear-gradient(
     to right top,
 
@@ -33,17 +30,8 @@ body {
     #212e1d,
     #17392d
   );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0.01;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+
 /* drop down menu */
 .container {
   display: inline-block;
@@ -86,16 +74,11 @@ body {
 .dropdown-content a {
   color: white;
   font-size: bold;
-  transition: all 0.2s ease-in-out;
 }
 .dropdown-content a:hover {
   background-color: white;
   color: black;
   text-decoration: none;
-  transform: scale(1.5);
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px;
 }
 
 /* login and sign up button styling */
@@ -118,28 +101,6 @@ body {
   margin-right: 35px;
   transition: all 0.2s ease-in-out;
 }
-#logout {
-  background-color: white;
-  border-radius: 10px;
-  color: black;
-  margin-right: 35px;
-  transition: all 0.2s ease-in-out;
-  list-style-type: none;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  font-weight: bold;
-  vertical-align: middle;
-  float: right;
-  margin-top: 1.5%;
-}
-#logout:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-  background-color: black;
-  color: #7af576;
-}
 #second:hover {
   transform: scale(1.1);
   cursor: pointer;
@@ -160,7 +121,7 @@ ul {
   margin: 15px;
   margin-right: 25px;
   max-width: 75%;
-  opacity: 0.25;
+  opacity: .25;
   border-radius: 80px;
 }
 
@@ -200,7 +161,6 @@ button {
   justify-content: space-evenly;
   margin-top: 5px;
   margin-bottom: 5px;
-  border-radius: 10px;
 }
 #jumbo {
   color: white;
@@ -217,7 +177,7 @@ button {
 }
 .promo p {
   font-size: 23px;
-  opacity: 0.5;
+  opacity: .5;
 }
 .promo h3 {
   font-size: 60px;
@@ -255,14 +215,13 @@ button {
   width: 50%;
 }
 .hr1::before {
-  right: 0.5em;
+  right: .5em;
   margin-left: -50%;
 }
 .hr1::after {
-  left: 0.5em;
+  left: .5em;
   margin-right: -50%;
 }
-
 /* information */
 #infoportion {
   margin-top: 100px;
@@ -272,7 +231,7 @@ button {
 .secure {
   color: #7af576;
   font-size: 25px;
-  opacity: 0.8;
+  opacity: .8;
 }
 
 .slogan {
@@ -286,264 +245,5 @@ button {
 .invite {
   font-size: 9px;
   color: white;
-  opacity: 0.45;
+  opacity: .45;
 }
-/* LOGIN SECTION */
-
-.loginlogo {
-  position: absolute;
-  top: 30px;
-  max-width: 10%;
-  left: 30px;
-}
-
-#loginContainer {
-  color: black;
-  max-width: 32%;
-  max-height: 80%;
-  background-color: white;
-  padding-top: 55px;
-  padding-bottom: 25px;
-  margin-left: 34%;
-  margin-right: 34%;
-  margin-top: 225px;
-}
-.loginh2 {
-  text-align: center;
-  margin: 25px;
-
-  font-size: 30px;
-  font-weight: bolder;
-}
-
-/* login input animation */
-div {
-  position: relative;
-}
-.inputBox {
-  display: block;
-}
-.parents-elm {
-  text-align: center;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-.inputBox input {
-  height: 50px;
-  background-color: #eeebeb;
-  border: #e6e4e4;
-  padding-top: 15px;
-  padding-left: 5px;
-  border-radius: 2.5px;
-  width: 100%;
-  margin: 10px;
-  font-size: 15px;
-  font-family: "FF Mark W05", sans-serif;
-  font-weight: 700;
-}
-.floating-label {
-  display: inline-block;
-  font-size: 15px;
-  left: 35px;
-  line-height: 20px;
-  position: absolute;
-  top: -webkit-calc(50% - 10px);
-  top: -moz-calc(50% - 10px);
-  top: calc(50% - 10px);
-  transition: top left 02s ease-in-out 0s;
-  transition: left 0.8s ease-in-out 0s;
-  font-size: 13px;
-  opacity: 0.7;
-  font-family: "FF Mark W05", sans-serif;
-  font-weight: 700;
-}
-.foucs-content .floating-label {
-  top: 10px;
-  left: 13px;
-}
-
-/* login button styling */
-.loginButton {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: white;
-  border-color: black;
-  border-radius: 100%;
-  margin-right: 45%;
-  margin-left: 45%;
-  padding: 0px;
-  border: none;
-  transform: rotate(-90deg);
-}
-.center-con {
-  display: flex;
-  height: 100px;
-  align-items: center;
-  justify-content: center;
-}
-
-.round {
-  opacity: 0.2;
-  position: relative;
-  width: 70px;
-  height: 70px;
-}
-
-.arrow {
-  z-index: 999;
-  height: 2.1px;
-  margin: 7px;
-  width: 21px;
-  background: black;
-  transition: 0.4s ease;
-}
-
-.arrow:first-child {
-  display: block;
-  position: absolute;
-  transform: rotate(45deg);
-  left: 25%;
-  bottom: 35%;
-}
-
-.arrow:nth-child(2) {
-  display: block;
-  position: absolute;
-  transform: rotate(-45deg);
-  left: 45%;
-  bottom: 35%;
-}
-
-.arrow:nth-child(3) {
-  display: block;
-  position: absolute;
-  transform: rotate(45deg);
-  left: 25%;
-  bottom: 54%;
-}
-
-.arrow:nth-child(4) {
-  display: block;
-  position: absolute;
-  transform: rotate(-45deg);
-  left: 45%;
-  bottom: 54%;
-}
-
-.round:hover .arrow:nth-child(1) {
-  transform: rotate(-135deg);
-}
-
-.round:hover .arrow:nth-child(2) {
-  transform: rotate(135deg);
-}
-
-.round:hover .arrow:nth-child(3) {
-  transform: rotate(225deg);
-}
-
-.round:hover .arrow:nth-child(4) {
-  transform: rotate(-225deg);
-}
-/* signup href */
-.signUphref {
-  color: #868585;
-  font-size: 15px;
-  text-align: center;
-  padding-bottom: 30px;
-  margin: 5px;
-}
-
-/* login footer/quote */
-
-.quote {
-  text-align: center;
-  margin-top: 50px;
-  padding-bottom: 25px;
-}
-.quoteword {
-  font-size: 15px;
-  color: white;
-  opacity: 0.7;
-  margin: 5px;
-  line-height: 1.5;
-}
-
-/* Create ACCOUNT STYLING */
-.hr2 {
-  margin-top: 30px;
-  margin-bottom: 70px;
-  overflow: hidden;
-  text-align: center;
-}
-.hr2::before,
-.hr2::after {
-  background-color: grey;
-  content: "";
-  display: inline-block;
-  height: 2px;
-  position: relative;
-  vertical-align: middle;
-  width: 50%;
-}
-.hr2::before {
-  right: 0.5em;
-  margin-left: -50%;
-}
-.hr2::after {
-  left: 0.5em;
-  margin-right: -50%;
-}
-.cardContainer {
-  max-width: 70%;
-  max-height: 100%;
-  margin-left: 15%;
-  display: grid;
-  grid-template-rows: repeat(10, 2fr);
-}
-.card {
-  display: grid;
-  grid-template-columns: 23% 50% 20%;
-  grid-auto-rows: auto;
-  gap: 3rem;
-  padding: 25px;
-  background-image: linear-gradient(
-    to right top,
-  
-    #242314,
-    #18100d,
-    #120b0a,
-    #0a0606,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #0a0606,
-    #120b0a,
-    #18100d,
-    #201910,
-    #242314,
-    #212e1d
-  );
-  background-repeat: repeat;
-  color:white;
-  box-shadow: 0px 0px 50px 5px #7af576;
-  
-}
-.spacing {
-  margin-top: 100px;
-}
-.leftCard {
-}
-.middleCard {
-  border: 1px;
-  border-color: black;
-}
-.rightCard {
-}
-
