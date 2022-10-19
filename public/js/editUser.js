@@ -4,7 +4,7 @@ const editProfile = async (event) => {
     const email = document.querySelector('#email-edit').value.trim();
     const name = document.querySelector('#name-edit').value.trim();
     const password = document.querySelector('#password-edit').value.trim();
-
+    
     if (password.length < 10) {
         alert("Password must be 10 characters");
         return;

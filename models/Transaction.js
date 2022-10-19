@@ -18,6 +18,10 @@ Transaction.init(
         amount: {
             type: DataTypes.DECIMAL,
         },
+        date: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
@@ -36,7 +40,7 @@ Transaction.init(
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'transaction'
