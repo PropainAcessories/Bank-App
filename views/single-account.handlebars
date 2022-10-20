@@ -1,21 +1,19 @@
-<section class="container">
-    <section class="account bg-secondary text-white">
-        <div class="row justify-content-around">
-            <div class="col-4">
-                <h4 class="text-secondary" id="accountId">{{account.id}}</h4>
-                <h3>{{account.account_type}}</h3>
-                <h2 id="balance">{{account.balance}}</h2>
-            </div>
-            <div class="col-2">
-                <label for="withdrawal">Withdrawal:</label>
-                <input id="withdrawal" type="text" />
-                <button class="bg-primary text-white" id="balanceBtn">Withdraw</button>
-            </div>
+<section class="account bg-secondary text-white">
+    <div class="row justify-content-around">
+        <div class="col-4">
+            <h4 class="text-secondary" id="accountId">{{account.id}}</h4>
+            <h3>{{account.account_type}}</h3>
+            <h2 id="balance">{{account.balance}}</h2>
         </div>
-        <div>
-            <h3><a href="/transaction/{{account.id}}">Transactions</a></h3>
+        <div class="col-2">
+            <label for="withdrawal">Withdrawal:</label>
+            <input id="withdrawal" type="text" />
+            <button class="bg-primary text-white" id="balanceBtn">Withdraw</button>
         </div>
-    </section>
+    </div>
+    <div>
+        <h3><a href="/transaction/{{account.id}}">Transactions</a></h3>
+    </div>
 </section>
 
 <script src="/js/transaction.js"></script>
