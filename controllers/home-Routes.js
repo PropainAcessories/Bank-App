@@ -97,17 +97,7 @@ router.get('/transaction/:id', withAuth, async (req, res) => {
             where: {
                 id: req.params.id
             },
-            include: [
-            {
-                model: User,
-                attributes: { exclude: ['password'] }
-            },
-            {
-                model: Account,
-                attributes: { exclude: ['pin'] }
-            },
-        ],
-        })
+        });
 
         if (!transactionData) {
             res.status(404).json({ message: 'No transactions found check ID or log in.' });
