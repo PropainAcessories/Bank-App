@@ -1,24 +1,23 @@
-const editProfile = async (event) => {
+const editHandler = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#email-edit').value.trim();
     const name = document.querySelector('#name-edit').value.trim();
+    const email = document.querySelector('#email-edit').value.trim();
     const password = document.querySelector('#password-edit').value.trim();
-    
-    if (password.length < 10) {
-        alert("Password must be 10 characters");
-        return;
-    }
+   
 
-    if(email && name && password) {
-        const response = await fetch('/api/user/id', {
-            method: 'PUT',
-            body: JSON.stringify({
-                email: email.value,
-                name: name.value,
-                password: password.value
-            }),
-            headers: { 'Content-Type': 'application/json' },
+   
+    // Go back and handle having multiple
+    if (name && email && password) {
+        const userId = localStorage.getItem('userId')
+        const response = await fetch('/api/user/' + userId, {
+           method: 'PUT',
+           body: JSON.stringify({
+            name,
+            email,
+            password,
+             }),
+             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
             document.location.replace('/');
@@ -26,6 +25,10 @@ const editProfile = async (event) => {
             alert(response.statusText);
         }
     }
+
+
+   
+
 };
 
-document.querySelector('.edit-form').addEventListener('submit', editProfile);
+document.querySelector('.edit-form').addEventListener('submit', editHandler);
