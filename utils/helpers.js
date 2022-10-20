@@ -2,7 +2,7 @@ module.exports = {
     // Helper functions
     current_date: () => {
         const dayjs = require('dayjs');
-        let now = dayjs().format('MMMM-DD-YYYY').toString();
+        let now = dayjs().format('MMMM-DD-YYYY hh:mm A').toString();
 
         console.log(now);
 
