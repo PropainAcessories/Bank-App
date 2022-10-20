@@ -4,6 +4,28 @@ const depositBtn = document.querySelector('#depositBtn');
 const accountId = document.querySelector('#accountId').innerHTML;
 console.log(accountId);
 
+const transaction = async (event) => {
+    event.preventDefault();
+
+    const transaction = document.querySelector('#withdrawal').value.trim();
+
+    const response = await fetch('/api/transaction/', {
+        method: 'POST',
+        body: JSON.stringify({
+            type: "withdrawal",
+            amount: transaction,
+            account_id: accountId,
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if(response.ok) {
+        document.location.reload();
+    } else {
+        alert(response.statusText);
+    }
+}
+
 const withdrawal = (event) => {
     event.preventDefault();
 
@@ -23,27 +45,5 @@ const withdrawal = (event) => {
     });
 };
 
-const transaction = async (event) => {
-    event.preventDefault();
 
-    const transaction = document.querySelector('#withdrawal').value.trim();
-
-    const response = await fetch('/api/transaction/', {
-        method: 'POST',
-        body: JSON.stringify({
-            type: "withdrawal",
-            amount: transaction,
-            account_id: accountId,
-            date
-        }),
-        headers: { 'Content-Type': 'application/json' }
-    });
-
-    if(response.ok) {
-        document.location.reload();
-    } else {
-        alert(response.statusText);
-    }
-}
-
-withdrawBtn.addEventListener('click', withdrawal, transaction);
+withdrawBtn.addEventListener('click', transaction, withdrawal);
