@@ -28,7 +28,7 @@ const transaction = async (event) => {
 
     const transaction = document.querySelector('#withdrawal').value.trim();
 
-    const response = await fetch('/api/transaction', {
+    const response = await fetch('/api/transaction/', {
         method: 'POST',
         body: JSON.stringify({
             type: "withdrawal",

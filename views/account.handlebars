@@ -1,7 +1,7 @@
-<section class="container">
-    <section class="account">
+<section class="bg-dark text-center">
+    <section class="account-card bg-secondary">
         {{#each accounts as |account|}}
-        <a href="/account/{{account.id}}">
+        <a href="/account/{{account.id}}" class="text-white">
             <h3>{{account.account_type}}</h3>
         </a>
         {{/each}}

@@ -2,12 +2,12 @@
     <section class="transaction">
         {{#each transactions as |transaction|}}
         <div class="card">
-            <h3>{{transaction.type}}</h3>
-            <h5>{{transaction.amount}}</h5>
-            <h6>{{transaction.date}}</h6>
+            <div class="card-body">
+                <h3>{{transaction.type}}</h3>
+                <h5>{{transaction.amount}}</h5>
+                <h6>{{transaction.date}}</h6>
+            </div>
         </div>
         {{/each}}
     </section>
 </section>
-
-<script src="/js/transaction.js"></script>

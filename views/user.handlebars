@@ -1,4 +1,4 @@
-<div class="col-2">
+<div class="column bg-secondary text-white font-weight-bold text-center">
     <div class="container">
         <div class="user-card">
             <h3 id="userId">{{user.id}}</h3>
@@ -8,20 +8,20 @@
     </div>
     <h2 class="title pb-4"> Edit Your Information:</h2>
     <form class="edit-form">
-        <div>
+        <div class="form-group mb-2">
             <label for="email-edit">New Email:</label>
             <input type="text" id="email-edit" />
         </div>
-        <div>
+        <div class="form-group mb-2">
             <label for="name-edit">New Name:</label>
             <input type="text" id="name-edit" />
         </div>
-        <div>
+        <div class="form-group mb-2">
             <label for="password-edit">New Password:</label>
             <input type="password" id="password-edit" />
         </div>
         <div>
-            <button type="submit" class="button">Submit</button>
+            <button type="submit" class="button btn-success text-white">Edit-Account</button>
         </div>
     </form>
 </div>
