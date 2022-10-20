@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const transactionData = await Transaction.findOne({
+        const transactionData = await Transaction.findAll({
             where: {
                 id: req.params.id
             },

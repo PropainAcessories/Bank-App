@@ -1,13 +1,11 @@
-<section class="container">
-    <section class="transaction">
+<section class="column bg-secondary">
+    <section class="transaction bg-secondary">
         {{#each transactions as |transaction|}}
-        <div class="card">
-            <div class="card-body">
+            <div class="card-body bg-secondary text-white font-weight-bold text-center">
                 <h3>{{transaction.type}}</h3>
                 <h5>{{transaction.amount}}</h5>
                 <h6>{{transaction.date}}</h6>
             </div>
-        </div>
         {{/each}}
     </section>
 </section>
