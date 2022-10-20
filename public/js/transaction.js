@@ -10,7 +10,7 @@ const withdrawal = (event) => {
     console.log(currentBalance - transaction);
     let newBalance = currentBalance - transaction;
 
-    fetch('/api/account/5', {
+    fetch('/api/account/1', {
         method: 'PUT',
         body: JSON.stringify({
             balance: newBalance
