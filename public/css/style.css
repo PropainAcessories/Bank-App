@@ -5,9 +5,12 @@ html {
   font-family: "lato", sans-serif;
 }
 /* gradient. still kinda tinkering with it to find the perfect combo ig xd */
+
 body {
+  animation: fadeInAnimation ease-in-out 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
   height: 100%;
-  background: gray;
   background-image: linear-gradient(
     to right top,
 
@@ -30,8 +33,17 @@ body {
     #212e1d,
     #17392d
   );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0.01;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /* drop down menu */
 .container {
   display: inline-block;
@@ -74,11 +86,16 @@ body {
 .dropdown-content a {
   color: white;
   font-size: bold;
+  transition: all 0.2s ease-in-out;
 }
 .dropdown-content a:hover {
   background-color: white;
   color: black;
   text-decoration: none;
+  transform: scale(1.5);
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 /* login and sign up button styling */
@@ -101,6 +118,28 @@ body {
   margin-right: 35px;
   transition: all 0.2s ease-in-out;
 }
+#logout {
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+  margin-right: 35px;
+  transition: all 0.2s ease-in-out;
+  list-style-type: none;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+  vertical-align: middle;
+  float: right;
+  margin-top: 1.5%;
+}
+#logout:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: black;
+  color: #7af576;
+}
 #second:hover {
   transform: scale(1.1);
   cursor: pointer;
@@ -121,7 +160,7 @@ ul {
   margin: 15px;
   margin-right: 25px;
   max-width: 75%;
-  opacity: .25;
+  opacity: 0.25;
   border-radius: 80px;
 }
 
@@ -161,6 +200,7 @@ button {
   justify-content: space-evenly;
   margin-top: 5px;
   margin-bottom: 5px;
+  border-radius: 10px;
 }
 #jumbo {
   color: white;
@@ -177,7 +217,7 @@ button {
 }
 .promo p {
   font-size: 23px;
-  opacity: .5;
+  opacity: 0.5;
 }
 .promo h3 {
   font-size: 60px;
@@ -215,13 +255,14 @@ button {
   width: 50%;
 }
 .hr1::before {
-  right: .5em;
+  right: 0.5em;
   margin-left: -50%;
 }
 .hr1::after {
-  left: .5em;
+  left: 0.5em;
   margin-right: -50%;
 }
+
 /* information */
 #infoportion {
   margin-top: 100px;
@@ -231,7 +272,7 @@ button {
 .secure {
   color: #7af576;
   font-size: 25px;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .slogan {
@@ -245,7 +286,108 @@ button {
 .invite {
   font-size: 9px;
   color: white;
-  opacity: .45;
+  opacity: 0.45;
+}
+/* LOGIN SECTION */
+
+.loginlogo {
+  position: absolute;
+  top: 30px;
+  max-width: 10%;
+  left: 30px;
+}
+
+#loginContainer {
+  color: black;
+  max-width: 32%;
+  max-height: 80%;
+  background-color: white;
+  padding-top: 55px;
+  padding-bottom: 25px;
+  margin-left: 34%;
+  margin-right: 34%;
+  margin-top: 225px;
+}
+.loginh2 {
+  text-align: center;
+  margin: 25px;
+
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+/* login input animation */
+div {
+  position: relative;
+}
+.inputBox {
+  display: block;
+}
+.parents-elm {
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.inputBox input {
+  height: 50px;
+  background-color: #eeebeb;
+  border: #e6e4e4;
+  padding-top: 15px;
+  padding-left: 5px;
+  border-radius: 2.5px;
+  width: 100%;
+  margin: 10px;
+  font-size: 15px;
+  font-family: "FF Mark W05", sans-serif;
+  font-weight: 700;
+}
+.floating-label {
+  display: inline-block;
+  font-size: 15px;
+  left: 35px;
+  line-height: 20px;
+  position: absolute;
+  top: -webkit-calc(50% - 10px);
+  top: -moz-calc(50% - 10px);
+  top: calc(50% - 10px);
+  transition: top left 02s ease-in-out 0s;
+  transition: left 0.8s ease-in-out 0s;
+  font-size: 13px;
+  opacity: 0.7;
+  font-family: "FF Mark W05", sans-serif;
+  font-weight: 700;
+}
+.foucs-content .floating-label {
+  top: 10px;
+  left: 13px;
+}
+
+/* login button styling */
+.loginButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-color: black;
+  border-radius: 100%;
+  margin-right: 45%;
+  margin-left: 45%;
+  padding: 0px;
+  border: none;
+  transform: rotate(-90deg);
+}
+.center-con {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.round {
+  opacity: 0.2;
+  position: relative;
+  width: 70px;
+  height: 70px;
 }
 
 .arrow {
@@ -404,6 +546,7 @@ button {
 }
 .rightCard {
 }
+
 
 #luckyLeft {
   position: absolute;
