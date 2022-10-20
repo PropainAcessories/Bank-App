@@ -1,13 +1,12 @@
 <section class="col-1">
-    <section class="account-card text-white">
+    <section class="account-card">
         <div class="card-header">
             <h3>{{account.account_type}}</h3>
-            <h2>{{account.balance}}</h2>
+            <h2 id="balance">{{account.balance}}</h2>
         </div>
-        <div>
-            <a href="/transaction/{{account.id}}">
-                <h3>Transactions</h3>
-            </a>
-        </div>
+    <input id="withdrawal" type="text" />
+    <button class="bg-primary text-white" id="balanceBtn">Balance</button>
     </section>
 </section>
+
+<script src="/js/transaction.js"></script>

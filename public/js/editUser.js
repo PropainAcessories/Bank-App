@@ -11,7 +11,7 @@ const editProfile = async (event) => {
     }
 
     if(email && name && password) {
-        const response = await fetch('/api/user/id', {
+        const response = await fetch('/api/user/1' +`${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 email: email.value,
