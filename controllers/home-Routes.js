@@ -47,9 +47,6 @@ router.get('/account/:id', withAuth, async (req, res) => {
                 id: req.params.id
             },
             attributes: ['id', 'account_type', 'balance'],
-            include: {
-                model: Transaction,
-            },
         });
 
         const account = accountData.get({ plain: true });
