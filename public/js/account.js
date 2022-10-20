@@ -32,6 +32,18 @@ const createAccount = async (event) => {
 };
 
 document.querySelector('.signup-form').addEventListener('submit', createAccount);
+
+function getInitial() {
+    var assetsArray = [];
+    var firstDeposit = document.getElementById("initial-deposit").value;
+    if (localStorage.getItem("totalAssets") == null) {
+        localStorage.setItem("totalAssets", "[]");
+    }
+    var assetsArray = JSON.parse(localStorage.getItem("totalAssets"));
+    assetsArray.push(firstDeposit);
+    localStorage.setItem("totalAssets", JSON.stringify(assetsArray))
+}
+document.querySelector('.signup-form').addEventListener('submit', getInitial);
 // function for input animation
 $(function(){
     $('.inputBox input').on('focus', function(){
