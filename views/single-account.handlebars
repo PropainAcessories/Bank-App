@@ -1,7 +1,7 @@
 <section class="column">
-    <section class="account-card">
-        <div class="card-header">
-            <h4 class="text-white" id="accountId">{{account.id}}</h4>
+    <section class="account-card bg-secondary text-white">
+        <div>
+            <h4 class="text-secondary" id="accountId">{{account.id}}</h4>
             <h3>{{account.account_type}}</h3>
             <h2 id="balance">{{account.balance}}</h2>
         </div>
@@ -11,6 +11,16 @@
         </div>
         <div>
             <button class="bg-primary text-white" id="balanceBtn">Withdraw</button>
+        </div>
+    </section>
+    <section class="transaction-card">
+            <div class="card">
+            <h3>{{transaction.type}}</h3>
+            <h5>{{transaction.amount}}</h5>
+            <h6>{{transaction.date}}</h6>
+        </div>
+        <div>
+            <h3><a href="/transaction/{{account.id}}">Transactions</a></h3>
         </div>
     </section>
 </section>

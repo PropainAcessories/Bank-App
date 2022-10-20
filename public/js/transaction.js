@@ -21,6 +21,28 @@ const withdrawal = (event) => {
         console.log(data);
         document.location.reload();
     });
+};
+
+const transaction = async (event) => {
+    event.preventDefault();
+
+    const transaction = document.querySelector('#withdrawal').value.trim();
+
+    const response = await fetch('/api/transaction', {
+        method: 'POST',
+        body: JSON.stringify({
+            type: "withdrawal",
+            amount: transaction,
+            account_id: accountId
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if(response.ok) {
+        document.location.reload();
+    } else {
+        alert(response.statusText);
+    }
 }
 
-withdrawBtn.addEventListener('click', withdrawal);
+withdrawBtn.addEventListener('click', withdrawal, transaction);

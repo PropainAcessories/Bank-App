@@ -20,6 +20,9 @@ router.get('/account', withAuth, async (req, res) =>{
                 user_id: req.session.user_id
             },
             attributes: { exclude: ['pin'] },
+            include: {
+                model: Transaction,
+            },
         });
 
         if(!accountData) {
@@ -49,7 +52,6 @@ router.get('/account/:id', withAuth, async (req, res) => {
             attributes: ['id', 'account_type', 'balance'],
             include: {
                 model: Transaction,
-                attributes: ['type', 'amount', 'id']
             },
         });
 
