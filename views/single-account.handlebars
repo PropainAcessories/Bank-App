@@ -1,11 +1,16 @@
-<section class="col-1">
+<section class="column">
     <section class="account-card">
         <div class="card-header">
             <h3>{{account.account_type}}</h3>
             <h2 id="balance">{{account.balance}}</h2>
         </div>
-    <input id="withdrawal" type="text" />
-    <button class="bg-primary text-white" id="balanceBtn">Balance</button>
+        <div>
+            <label for="withdrawal">Withdrawal:</label>
+            <input id="withdrawal" type="text" />
+        </div>
+        <div>
+            <button class="bg-primary text-white" id="balanceBtn">Withdraw</button>
+        </div>
     </section>
 </section>
 
