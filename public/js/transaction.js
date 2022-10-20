@@ -1,7 +1,8 @@
 const currentBalance = document.querySelector('#balance').innerHTML;
 const withdrawBtn = document.querySelector('#balanceBtn');
 const depositBtn = document.querySelector('#depositBtn');
-
+const accountId = document.querySelector('#accountId').innerHTML;
+console.log(accountId);
 
 const withdrawal = (event) => {
     event.preventDefault();
@@ -10,7 +11,7 @@ const withdrawal = (event) => {
     console.log(currentBalance - transaction);
     let newBalance = currentBalance - transaction;
 
-    fetch('/api/account/1', {
+    fetch('/api/account/' + `${accountId}`, {
         method: 'PUT',
         body: JSON.stringify({
             balance: newBalance
@@ -19,7 +20,7 @@ const withdrawal = (event) => {
     }).then((data) => {
         console.log(data);
         document.location.reload();
-    })
+    });
 }
 
 withdrawBtn.addEventListener('click', withdrawal);
