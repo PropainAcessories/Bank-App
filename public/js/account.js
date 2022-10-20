@@ -32,3 +32,14 @@ const createAccount = async (event) => {
 };
 
 document.querySelector('.signup-form').addEventListener('submit', createAccount);
+// function for input animation
+$(function(){
+    $('.inputBox input').on('focus', function(){
+      $(this).parents('.parents-elm').addClass('foucs-content'); 
+    });
+    $(document).mouseup(function(e){
+          if($(e.target).parents('.inputBox input').length==0 && !$(e.target).is('.inputBox input')){
+              $('.parents-elm').removeClass('foucs-content');
+          }
+      });
+  });

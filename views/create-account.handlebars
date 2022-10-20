@@ -1,4 +1,4 @@
-<h1 class="hr2">LuckyLucre</h1>
+{{!-- <h1 class="hr2">LuckyLucre</h1>
 <div class="cardContainer">
   {{! checkings }}
   <div class="spacing">
@@ -185,27 +185,62 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
-{{!-- <div class="column">
-  <h2 class="title pb-4">Create Bank Account</h2>
+<img src="/Assets/Luckyleft.png" alt="luckyleft" id="luckyLeft">
+<img src="/Assets/LucreRight.png" alt="lucreright" id="lucreRight">
+<div class="container" id="loginContainer">
+  <h2 class="loginh2">Open Account</h2>
   <form class="signup-form">
-    <div>
-      <label for="account-type">Account Type:</label>
-      <input type="text" id="account-type" />
+    <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="account-type" />
+      </span>
+      <label for="account-type" class="floating-label">Account Type</label>
     </div>
-    <div>
-      <label for="balance-signup">Initial Deposit:</label>
-      <input type="text" id="initial-deposit" />
+    <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="initial-deposit" />
+      </span>
+      <label for="balance-signup" class="floating-label">Initial Deposit</label>
     </div>
-    <div>
-      <label for="pin-signup">Pin:</label>
-      <input type="text" id="pin" />
+    <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="pin" />
+      </span>
+      <label for="pin-signup" class="floating-label">Pin</label>
     </div>
-    <div>
-      <button type="submit" class="button">Create Account</button>
-    </div>
+    <button type="submit" class="loginButton">
+      <div class="center-con">
+        <div class="round">
+          <span class="arrow"></span>
+          <span class="arrow"></span>
+          <span class="arrow"></span>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </button>
   </form>
+  <div class="signUphref">
+    <p class="signUphref">Feeling Lucky?</p>
+    <a class="signUphref">Lucky Lucre</a>
+  </div>
 </div>
+<h1 class="hr1">LuckyLucre</h1>
+<footer class="quote">
+  <h3 class="quoteword">"<span class="green">Luck</span>
+    is a Dividend of
+    <span class="green">LuckyLucre</span>. The more you bank with
+    <span class="green">LuckyLucre</span>, the
+    <span class="green">Luckier you get</span>.
+    <br />
+    Keep banking with
+    <span class="green">LuckyLucre"</span></h3>
+  <h4 class="quoteword">Sam Song</h4>
+  <h5 class="quoteword">Chairperson & CEO, LuckyLucre</h5>
+</footer>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+></script>
 
-<script src="/js/account.js"></script> --}}
+<script src="/js/account.js"></script>

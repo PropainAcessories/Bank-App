@@ -547,3 +547,19 @@ div {
 .rightCard {
 }
 
+#luckyLeft {
+  position: absolute;
+  top: 35%;
+  left: 5%;
+  width: 475px;
+  opacity: .125;
+}
+
+#lucreRight {
+  position:absolute;
+  top: 35%;
+  left: 72%;
+  width: 450px;
+  opacity: .125;
+}
+

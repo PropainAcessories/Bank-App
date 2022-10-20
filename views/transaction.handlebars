@@ -1,10 +1,22 @@
-<section class="container text-white">
-    <section class="transaction">
-        {{#each transactions as |transaction|}}
-            <h3>{{transaction.type}}</h3>
-            <h5>{{transaction.amount}}</h5>
-        {{/each}}
+<section class="col-1">
+    <section class="account-card">
+        <div class="card-header">
+            <h3>{{account.account_type}}</h3>
+            <h2 id="balance">{{account.balance}}</h2>
+        </div>
+    <input id="withdrawal" type="text" />
+    <button class="bg-primary text-white" id="balanceBtn">Balance</button>
     </section>
 </section>
 
 <script src="/js/transaction.js"></script>
+
+<section class="container">
+    <section class="transaction">
+        {{#each transactions as |transaction|}}
+            <h3>{{transaction.type}}</h3>
+            <h5>{{transaction.amount}}</h5>
+            <h6>{{transaction.date}}</h6>
+        {{/each}}
+    </section>
+</section>

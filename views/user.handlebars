@@ -1,4 +1,4 @@
-<div class="container" id="loginContainer">
+{{! <div class="container" id="loginContainer">
   <h2 class="loginh2">Edit Your Information</h2>
   <form class="signup-form">
 
@@ -38,35 +38,93 @@
       </span>
     </div>
   </form>
-</div>
+</div> }}
 
-{{!-- 
-
-<div class="col-2">
-    <div class="container">
-        <div class="user-card text-white">
-            <h3>{{user.email}}</h3>
-            <h3>{{user.name}}</h3>
-        </div>
+<img src="/Assets/Luckyleft.png" alt="luckyleft" id="luckyLeft" />
+<img src="/Assets/LucreRight.png" alt="lucreright" id="lucreRight" />
+<div class="container" id="loginContainer">
+  <h2 class="loginh2">Edit Your Info</h2>
+  <h5 class="loginh2">Current Email:{{user.email}}</h5>
+  <h5 class="loginh2">Current Name:{{user.name}}</h5>
+  <form class="edit-form">
+    <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="email-edit" />
+      </span>
+      <label for="account-type" class="floating-label">New Email</label>
     </div>
-    <h2 class="title pb-4"> Edit Your Information:</h2>
-    <form class="edit-form">
-        <div>
-            <label for="email-edit">New Email:</label>
-            <input type="text" id="email-edit" />
+    <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="name-edit" />
+      </span>
+      <label for="balance-signup" class="floating-label">New Name</label>
+    </div>
+    <div class="parents-elm">
+      <span class="inputBox">
+        <input type="text" class="inputText" id="password-edit" />
+      </span>
+      <label for="pin-signup" class="floating-label">New Password</label>
+    </div>
+    <button type="submit" class="loginButton">
+      <div class="center-con">
+        <div class="round">
+          <span class="arrow"></span>
+          <span class="arrow"></span>
+          <span class="arrow"></span>
+          <span class="arrow"></span>
         </div>
-        <div>
-            <label for="name-edit">New Name:</label>
-            <input type="text" id="name-edit" />
-        </div>
-        <div>
-            <label for="password-edit">New Password:</label>
-            <input type="password" id="password-edit" />
-        </div>
-        <div>
-            <button type="submit" class="button">Submit</button>
-        </div>
-    </form>
+      </div>
+    </button>
+  </form>
+  <div class="signUphref">
+    <p class="signUphref">Feeling Lucky?</p>
+    <a class="signUphref">Lucky Lucre</a>
+  </div>
 </div>
+<h1 class="hr1">LuckyLucre</h1>
+<footer class="quote">
+  <h3 class="quoteword">"<span class="green">Luck</span>
+    is a Dividend of
+    <span class="green">LuckyLucre</span>. The more you bank with
+    <span class="green">LuckyLucre</span>, the
+    <span class="green">Luckier you get</span>.
+    <br />
+    Keep banking with
+    <span class="green">LuckyLucre"</span></h3>
+  <h4 class="quoteword">Sam Song</h4>
+  <h5 class="quoteword">Chairperson & CEO, LuckyLucre</h5>
+</footer>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+></script>
 
-<script src="/js/editUser.js"></script> --}}
+<img src="/Assets/Luckyleft.png" alt="luckyleft" id="luckyLeft" />
+<img src="/Assets/LucreRight.png" alt="lucreright" id="lucreRight" />
+{{!-- <div class="col-2">
+  <div class="container">
+    <div class="user-card text-white">
+      <h3>{{user.email}}</h3>
+      <h3>{{user.name}}</h3>
+    </div>
+  </div>
+  <h2 class="title pb-4"> Edit Your Information:</h2>
+  <form class="edit-form">
+    <div>
+      <label for="email-edit">New Email:</label>
+      <input type="text" id="email-edit" />
+    </div>
+    <div>
+      <label for="name-edit">New Name:</label>
+      <input type="text" id="name-edit" />
+    </div>
+    <div>
+      <label for="password-edit">New Password:</label>
+      <input type="password" id="password-edit" />
+    </div>
+    <div>
+      <button type="submit" class="button">Submit</button>
+    </div>
+  </form>
+</div> --}}
+
+<script src="/js/editUser.js"></script>
