@@ -33,7 +33,8 @@ const transaction = async (event) => {
         body: JSON.stringify({
             type: "withdrawal",
             amount: transaction,
-            account_id: accountId
+            account_id: accountId,
+            date
         }),
         headers: { 'Content-Type': 'application/json' }
     });
