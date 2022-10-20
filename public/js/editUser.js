@@ -1,42 +1,34 @@
-const editProfile = async (event) => {
-  event.preventDefault();
+const editHandler = async (event) => {
+    event.preventDefault();
 
-  const email = document.querySelector("#email-edit").value.trim();
-  const name = document.querySelector("#name-edit").value.trim();
-  const password = document.querySelector("#password-edit").value.trim();
+    const name = document.querySelector('#name-edit').value.trim();
+    const email = document.querySelector('#email-edit').value.trim();
+    const password = document.querySelector('#password-edit').value.trim();
+   
 
-  if (password.length < 10) {
-    alert("Password must be 10 characters");
-    return;
-  }
-
-  if (email && name && password) {
-    const response = await fetch("/api/user/1" + `${id}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        email: email.value,
-        name: name.value,
-        password: password.value,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-    if (response.ok) {
-      document.location.replace("/");
-    } else {
-      alert(response.statusText);
+   
+    // Go back and handle having multiple
+    if (name && email && password) {
+        const userId = localStorage.getItem('userId')
+        const response = await fetch('/api/user/' + userId, {
+           method: 'PUT',
+           body: JSON.stringify({
+            name,
+            email,
+            password,
+             }),
+             headers: { 'Content-Type': 'application/json' },
+        });
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert(response.statusText);
+        }
     }
-  }
+
+
+   
+
 };
 
-document.querySelector(".edit-form").addEventListener("submit", editProfile);
-// function for input animation
-$(function(){
-  $('.inputBox input').on('focus', function(){
-    $(this).parents('.parents-elm').addClass('foucs-content'); 
-  });
-  $(document).mouseup(function(e){
-        if($(e.target).parents('.inputBox input').length==0 && !$(e.target).is('.inputBox input')){
-            $('.parents-elm').removeClass('foucs-content');
-        }
-    });
-});
+document.querySelector('.edit-form').addEventListener('submit', editHandler);
